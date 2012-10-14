@@ -142,7 +142,6 @@ module.factory('langService', [
 				} else if (location.indexOf('user') > -1) {
 					$rootScope.getLangUser();
 					$rootScope.getLangMessage();
-					$rootScope.getLangTos();
 				} else if (location.indexOf('admin') > -1) {
 					$rootScope.getLangAdmin();
 				} else if (location.indexOf('home') > -1) {
