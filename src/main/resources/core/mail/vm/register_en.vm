@@ -1,0 +1,14 @@
+<html>
+<body>
+<h3>Hi ${name}, </h3>
+<div>
+	Thanks for signing up for didau.vn.
+	<br/> 
+	There's just one more step, click on this link to verify your email address:
+	<br/>
+	<a href="didauvn/verify/${uid}/${token}" target="_blank">
+	didauvn/verify/${uid}/${token}</a><br/>
+	Thanks, and happy hanging out!
+</div>
+</body>
+</html>

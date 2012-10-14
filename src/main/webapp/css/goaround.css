@@ -1,0 +1,300 @@
+#divCat {
+	position: fixed;
+	left: 0px;
+	top: 80px;
+	z-index: 100;
+	width: 180px;
+	border-right: solid thin #cccccc;
+}
+
+#divCat a {
+	color: #333333;
+	font-weight: bold;
+}
+
+.catName {
+	height: 18px;
+	padding-left: 20px;
+	/* border-bottom: solid thin #cccccc; */
+}
+
+.catName:hover {
+	background-color: #dddddd;
+}
+
+#divCat img {
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	float: left;
+	height: 50px;
+}
+
+#goaround {
+	padding: 20px;
+	margin-left: 180px;
+	border-left: solid thin #cccccc;
+}
+
+div.GaTitle {
+	margin: 15px;
+	/* border-bottom: solid thin #d5d5d5; */
+	font-size: 25px;
+	height: 25px;
+	
+	display: none;
+}
+
+#containerGA {
+	padding: 0px;
+	margin-top: 0px;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+}
+
+.category {
+	width: 100%;
+}
+
+
+
+table tr td {
+	vertical-align: top;
+}
+
+.placeName {
+	padding: 20px 20px 20px 0px;
+	margin-left: 112px;
+}
+
+.placeName a {
+	/* font-size: 15px; */
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.placeName span {
+	color: gray;
+	font-weight: normal;
+}
+
+.placeAvatar {
+	padding: 20px 20px 20px 20px;
+	width: 70px;
+	float: left;
+}
+
+.placeAvatar img {
+	display: block;
+	border: solid thin #333333;
+	width: 70px;
+}
+
+.seperateLine {
+	/* border-bottom: solid thin #d5d5d5; */
+}
+
+/*--------------------------- NEWS ----------------------------*/
+
+.news {
+	width: 255px;
+	text-align: left;
+	cursor: pointer;
+	margin: 10px;
+	background-color: #ffffff;
+	
+	/*-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 10px;*/
+	/**display: none; /** Hide items initially to avoid a flicker effect **/
+	
+	/* box-shadow: 0px 1px 1px rgba(0, 0, 0, .5);
+	-webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, .5);
+	-moz-box-shadow: 0px 1px 1px rgba(0, 0, 0, .5); */
+}
+
+.newsContent {
+	padding: 0px 20px 20px 20px;
+	clear: both;
+	text-align: justify;
+}
+
+.newsContent .title {
+	font-weight: bolder;
+	color: #000000;
+	/* padding-bottom: 20px; */
+}
+
+
+.newsPhoto img {
+	width: 255px;
+	max-width: 100%;
+	display: block;
+}
+
+
+.newsLabel {
+	color: #ffc000;
+}
+
+.noticeLabel {
+	color: #f53a00;
+}
+
+.discountLabel {
+	color: #00b1eb;
+}
+
+
+/*--------------------------- OFFERS ----------------------------*/
+#categoryOfferWeek {
+	margin-top: 10px;
+}
+
+.offer {
+	width: 210px;
+	text-align: justify;
+	/*-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 10px;*/
+	border-bottom: solid 2px #f13115;
+	padding: 0px 20px 20px 20px;
+	cursor: pointer;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+
+.offerContainer {
+	list-style-type: none;
+	position: relative;
+	/** Needed to ensure items are laid out relative to this container **/
+	margin: 0;
+}
+
+.offerContent {
+	padding: 10px 0px 0px 0px;
+	border-top: dashed thin #d0d0d0;
+}
+
+.offerPhoto {
+	padding: 0px 0px 10px 0px;
+	position: relative;
+}
+
+.offerPhoto .offerTag {
+	position: absolute;
+	left: -5px;
+	top: -5px;
+	height: 50px;
+	min-width: 50px;
+}
+
+.offerPhoto .offerTag img {
+	float: left;
+	padding: 0;
+	margin: 0;
+}
+
+.offerPhoto .offerTag .offerDay {
+	color: #f5f5f5;
+	float: left;
+	padding-bottom: 0px;
+	padding-top: 15px;
+	padding-left: 10px;
+	padding-right: 15px;
+	height: 35px;
+}
+
+.offerPhoto .offerTag .offerDay span {
+	color: #f5f5f5;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.offerPhoto img {
+	max-width: 210px;
+}
+
+.promotion {
+	background-color: #00699f;
+}
+
+.discount {
+	background-color: #f22200;
+}
+
+/*--------------------------- NEWPLACE ----------------------------*/
+.boxContainer {
+	margin: 0;
+}
+
+.newplaces {
+	text-align: justify;
+	border: solid thin #d0d0d0;
+	border-bottom: solid thin #909090;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	cursor: pointer;
+	margin-bottom: 10px;
+}
+
+.newplaces img {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
+
+div.newplaces {
+	float: left; /* important */
+	position: relative;
+	/* important(so we can absolutely position the description div */
+}
+
+.newplaces .npdesc {
+	position: absolute;
+	/* absolute position (so we can position it where we want)*/
+	bottom: 0px; /* position will be on bottom */
+	left: 0px;
+	width: 100%;
+	/* styling bellow */
+	background-color: black;
+	font-family: 'tahoma';
+	font-size: 15px;
+	color: white;
+	opacity: 0.6; /* transparency */
+	filter: alpha(opacity =         60); /* IE transparency */
+}
+
+.newplaces .npdesc .npcontent {
+	padding: 10px;
+	margin: 0px;
+}
+
+.box {
+	width: 200px;
+	background-color: #ffffff;
+	border: 1px solid #dedede;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	padding: 4px;
+}
+
+/* #loading {
+	text-align: center;
+	z-index: 100;
+	position: fixed;
+	left: 45%;
+	bottom: 40px;
+	width: 200px;
+	padding: 10px;
+	background: black;
+	opacity: 0.8;
+	color: white;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+} */

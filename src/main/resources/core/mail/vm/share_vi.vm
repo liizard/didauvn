@@ -1,0 +1,9 @@
+<html>
+<body>
+<div>	
+	${userName} chia sẻ địa điểm với bạn:
+	<p>"${message}": <a href="http://didauvn/place/#/view/${placeId}" target="_blank">${placeName}</a></p>
+ 	<p>${placeAddress}</p>
+</div>
+</body>
+</html>

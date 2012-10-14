@@ -1,0 +1,54 @@
+{
+"err201":"Tên địa điểm trống",
+"err202":"Tên địa điểm quá dài",
+"err203":"Loại hình kinh doanh không hợp lệ",
+"err204":"Quận không hợp lệ",
+"err205":"Phường không hợp lệ",
+"err206":"Đường không hợp lệ",
+"err207":"Địa chỉ trống",
+"err208":"Địa chỉ quá dài",
+"err209":"Mô tả quá dài",
+
+"err210":"Tiêu đề trống",
+"err211":"Tiêu đề quá dài",
+"err212":"Mô tả trống",
+"err213":"Mô tả quá dài",
+"err214":"Nội dung quá dài",
+"err215":"Dung lượng hình tin tức quá lớn",
+"err216":"Loại hình tin tức không được cho phép",
+
+"err220":"Thư điện tử trống",
+"err221":"Thư điện tử đã được đăng ký hoặc không tồn tại",
+"err222":"Tên trống",
+"err223":"Tên quá dài",
+"err224":"Ngày sinh trống",
+"err225":"Mật khẩu trống",
+"err226":"Độ dài mật khẩu phải lớn hơn 5 ký tự",
+"err227":"Dung lượng hình avatar quá lớn",
+"err228":"Loại hình avatar không được cho phép",
+"err229":"Thư điện tử không tồn tại",
+"err230":"Email này có trong danh sách!",
+"err2200":"Ngày sinh không hợp lệ",
+"err2201":"Mật khẩu xác nhận không khớp",
+
+"err231":"Đường dẫn phim trống",
+"err232":"Chú thích phim trống",
+"err233":"Chú thích phim quá dài",
+
+"err241":"Chú thích hình trống",
+"err242":"Dung lượng hình quá lớn",
+"err243":"Loại hình không được cho phép",
+"err244":"Chú thích hình quá dài",
+
+"err251":"Mật khẩu cũ trống",
+"err252":"Mật khẩu mới trống",
+"err253":"Mật khẩu cũ không đúng",
+
+"err261":"Mô tả báo cáo trống",
+"err262":"Mô tả báo cáo quá dài",
+
+"err280":"User is not existed",
+"err281":"Number of Day is Invalid",
+"err282":"Ban Date is Invalid",
+"err283":"User has been banned"
+}

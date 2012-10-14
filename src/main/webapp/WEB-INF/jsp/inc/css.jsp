@@ -1,0 +1,12 @@
+<link rel="stylesheet" type="text/css"
+	href="<spring:message code="domain"/>/css/common.css" />
+<link rel="stylesheet" type="text/css"
+	href="<spring:message code="domain"/>/css/site.css" />
+<link rel="stylesheet" type="text/css"
+	href="<spring:message code="domain"/>/css/lib/jquery-ui.css" />
+<link rel="stylesheet" type="text/css"
+	href="<spring:message code="domain"/>/css/lib/jquery.ptags.default.css" />
+<link rel="stylesheet" type="text/css"
+	href="<spring:message code="domain"/>/css/lib/jquery.pnotify.default.css" />
+<link rel="stylesheet" type="text/css"
+	href="<spring:message code="domain"/>/css/lib/jquery.pnotify.default.icons.css" />

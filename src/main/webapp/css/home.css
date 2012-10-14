@@ -1,0 +1,62 @@
+#wrapper {
+	/* background-color: #000000; */
+}
+
+#container {
+}
+
+#welcome {
+	background-color: #eeeeee;
+	margin: 0;
+	z-index: 400;
+	width: 100%;
+}
+
+#welcome #divLogo {
+	margin: auto;
+	background-image: url('../img/res/bg/wbg.jpg');
+	background-position: bottom center;
+	background-repeat: no-repeat;
+	background-color: #eeeeee;
+	min-height: 450px;
+	height: 450px;
+	width: 1160px;
+}
+
+#welcome #divLogo img {
+	padding: 0;
+	margin: auto;
+	display: block;
+	width: 100px;
+}
+
+
+#welcome #overview {
+	/* width: 100%; */
+	/* background-color: #000000; */
+	padding: 0px 50px 20px 50px;
+	color: #222222;
+}
+
+#welcome #overview table {
+	margin: auto;
+}
+
+#welcome #overview table td {
+	width: 20%;
+	vertical-align: top;
+	padding-right: 20px;
+	padding-left: 20px;
+	padding-top: 10px;
+}
+
+#welcome .iconLine {
+	padding-top: 0px !important;
+	border-bottom: dashed thin gray;
+}
+
+#welcome #overview img {
+	padding: 0;
+	margin: 0;
+	display: block;
+}

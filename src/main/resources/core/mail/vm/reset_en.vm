@@ -1,0 +1,12 @@
+<html>
+<body>
+<h3>Hi ${userName}, </h3>
+
+<div>
+	This email is sent to you because your email address is <a href="mailto:${email}">${email}</a>.
+	<br />
+	Your password has been reset to "${password}".
+</div>
+</body>
+
+</html>

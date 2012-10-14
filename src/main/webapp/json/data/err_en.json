@@ -1,0 +1,54 @@
+{
+"err201":"Place name is not specified",
+"err202":"Place name is too long",
+"err203":"Business type is invalid",
+"err204":"District is invalid",
+"err205":"Ward type is invalid",
+"err206":"Street type is invalid",
+"err207":"Address is not specified",
+"err208":"Address is too long",
+"err209":"Description is too long",
+
+"err210":"Title is not specified",
+"err211":"Title is too long",
+"err212":"Description is not specified",
+"err213":"Description is too long",
+"err214":"Content is too long",
+"err215":"News's image size is out of limit",
+"err216":"News's image type is not allowed",
+
+"err220":"Email is not specified",
+"err221":"Email is already used or invalid",
+"err222":"Name is not specified",
+"err223":"Name is too long",
+"err224":"Birthday is not specified",
+"err225":"Password is not specified",
+"err226":"Password length must be larger than 5 characters",
+"err227":"Avatar size is out of limit",
+"err228":"Avatar type is not allowed",
+"err229":"Email is invalid",
+"err230":"Duplicate email!",
+"err2200":"Birthday is invalid",
+"err2201":"Confirm password do not match",
+
+"err231":"Video link is not specified",
+"err232":"Video caption is not specified",
+"err233": "Video caption is too long",
+
+"err241":"Image caption is not specified",
+"err242":"Image size is out of limit",
+"err243":"Image type is not allowed",
+"err244":"Image caption is too long",
+
+"err251":"Old password is not specified",
+"err252":"New password is not specified",
+"err253":"Old password is wrong",
+
+"err261":"Report description is not specified",
+"err262":"Report description is too long",
+
+"err280":"User is not existed",
+"err281":"Number of Day is Invalid",
+"err282":"Ban Date is Invalid",
+"err283":"User has been banned"
+}

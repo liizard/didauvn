@@ -1,0 +1,17 @@
+<html>
+<body>
+<h3>Hi ${name}, </h3>
+<div>
+	Cám ơn bạn đã ghi danh tại didau.vn.
+	<br/> 
+	Để hoàn tất, Vui lòng nhấn vào đường dẫn sau để kích hoạt tài khoản:
+	<br/>
+	<a href="didauvn/verify/${uid}/${token}" target="_blank">
+	didauvn/verify/${uid}/${token}</a>
+	<br/>
+	Xin cám ơn, chúc ăn chơi vui vẻ!
+	<br/>
+	Ban quản trị didauvn-wonderboysG
+</div>
+</body>
+</html>

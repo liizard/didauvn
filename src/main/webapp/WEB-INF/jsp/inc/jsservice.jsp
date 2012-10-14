@@ -1,0 +1,16 @@
+<script type="text/javascript"
+	src="<spring:message code="domain"/>/js/service/language-service.js"></script>
+<script type="text/javascript"
+	src="<spring:message code="domain"/>/js/service/location-service.js"></script>
+<script type="text/javascript"
+	src="<spring:message code="domain"/>/js/service/errorhandler-service.js"></script>
+<script type="text/javascript"
+	src="<spring:message code="domain"/>/js/service/businesstype-service.js"></script>
+<script type="text/javascript"
+	src="<spring:message code="domain"/>/js/service/security-service.js"></script>
+<script type="text/javascript"
+	src="<spring:message code="domain"/>/js/service/tag-service.js"></script>
+<script type="text/javascript"
+	src="<spring:message code="domain"/>/js/service/locationauto-service.js"></script>
+<script type="text/javascript"
+	src="<spring:message code="domain"/>/js/service/validation-service.js"></script>

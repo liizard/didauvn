@@ -1,0 +1,12 @@
+<html>
+<body>
+<h3>Chào ${userName}, </h3>
+
+<div>
+	Thư này được gửi cho bạn bởi vì hộp thư của bạn là <a href="mailto:${email}">${email}</a>.
+	<br />
+	Mật khẩu của bạn đã được đổi lại thành "${password}".
+</div>
+</body>
+
+</html>

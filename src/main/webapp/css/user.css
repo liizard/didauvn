@@ -1,0 +1,64 @@
+#wrapperPlaceOverview {
+	display: table;
+	width: 100%;
+	padding: 20px 20px 0px 20px;
+}
+
+#wrapperPlaceOverview #placeAvatar {
+	display: table-cell;
+	width: 70px;
+}
+
+#wrapperPlaceOverview #placeAvatar img {
+	border: solid thin #333333;
+	display: block;
+	width: 70px;
+}
+
+#wrapperPlaceOverview #placeOverview {
+	display: table-cell;
+	vertical-align: middle;
+	padding: 0px 20px 0px 20px;
+}
+
+#wrapperPlaceOverview #placeAddress {
+	display: table-cell;
+	vertical-align: middle;
+	line-height: 18px;
+	width: 100%;
+}
+
+#wrapperPlaceOverview #placeAddress img {
+	margin-bottom: 3px;
+}
+#note {
+	position: absolute;
+	display: none;
+	z-index: 200;
+}
+
+#note table td {
+	vertical-align: bottom;
+}
+
+#note table td img {
+	margin: 0px;
+	display: block;
+	margin-left: 20px;
+}
+
+#noteContent {
+	background-color: #fcf9a1;
+	padding: 10px;
+	box-shadow: 1px 1px 4px rgba(0, 0, 0, .5);
+	-webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, .5);
+	-moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, .5);
+	text-align: justify;
+	min-width: 150px;
+}
+
+.noteArrow {
+	height: 5px;
+	padding: 0px;
+	text-align: center;
+}

@@ -1,0 +1,104 @@
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	vertical-align: baseline;
+	border-spacing: 0;
+	font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+	font-size: 12px;
+	line-height: 18px;
+}
+
+select {
+	border: solid thin #aaa;
+	box-shadow: inset 1px 1px 10px rgba(0, 0, 0, .1);
+	padding: 5px;
+	width: 210px;
+}
+
+input.text,textarea {
+	vertical-align: middle;
+	border: solid thin #aaa;
+	box-shadow: inset 1px 1px 10px rgba(0, 0, 0, .1);
+	padding: 5px;
+	width: 200px;
+}
+
+input.file {
+	
+}
+
+input.button {
+	display: inline-block;
+	padding: 4px 10px 5px;
+	margin-bottom: 0;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 18px;
+	color: #000;
+	text-align: center;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	vertical-align: middle;
+	cursor: pointer;
+	background-color: #e5e5e5;
+	vertical-align: middle;
+
+	border: solid thin rgba(0, 0, 0, .2);
+	border-bottom: solid thin rgba(0, 0, 0, .5);
+	/*-webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;*/
+    
+	/* filter: progid : dximagetransform.microsoft.gradient (  
+		startColorstr = '#ffffff', endColorstr = '#e6e6e6',
+		GradientType = 0 );
+	filter: progid : dximagetransform.microsoft.gradient (  
+		 enabled = false );
+	filter: progid : DXImageTransform.Microsoft.Gradient (  
+		 StartColorStr = '#ffffff',
+		EndColorStr = '#dddddd', GradientType = 0 ); */
+		 
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+	background: -webkit-gradient(linear, center bottom, center top, from(rgba(0, 0, 0,
+		.1) ), to(rgba(255, 255, 255, .1) ) );
+	background: -moz-linear-gradient(center top, rgba(255, 255, 255, .1) 0%,
+		rgba(0, 0, 0, .1) 100% );
+	background: -ms-linear-gradient(center top, rgba(255, 255, 255, .1) 0%,
+		rgba(0, 0, 0, .1) 100% );
+
+}
+
+.buttonAccept {
+	background-color: #00adee;
+}
+
+.buttonCancel,.buttonDelete {
+	background-color: #e62727;
+}
+
+input.button:hover {
+	background-color: #d5d5d5;
+}
+
+input.button:active {
+	box-shadow: inset 1px 1px 5px rgba(0, 0, 0, .2);
+	border-bottom: solid thin rgba(0, 0, 0, .2);
+}
+
+a {
+	font-size: 12px;
+	color: #F13115;
+	text-decoration: none;
+}
+
+a.action {
+	font-weight: bold;
+}
+
+a.pageSelected-true{
+	color: #444444;
+}
+

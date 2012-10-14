@@ -1,0 +1,28 @@
+<script type="text/javascript"
+	src="<spring:message code="domain"/>/js/lib/jquery.min.js"></script>
+<script type="text/javascript"
+	src="<spring:message code="domain"/>/js/lib/angular.min.js"></script>
+<script type="text/javascript"
+	src="<spring:message code="domain"/>/js/lib/angular-sanitize.min.js"></script>
+<script type="text/javascript"
+	src="<spring:message code="domain"/>/js/lib/angular-cookies.min.js"></script>
+<script type="text/javascript"
+	src="<spring:message code="domain"/>/js/lib/jquery.pnotify.min.js"></script>
+<script type="text/javascript"
+	src="<spring:message code="domain"/>/js/lib/jquery.ui.core.js"></script>
+<script type="text/javascript"
+	src="<spring:message code="domain"/>/js/lib/jquery.ui.widget.js"></script>
+<script type="text/javascript"
+	src="<spring:message code="domain"/>/js/lib/jquery.ui.autocomplete.js"></script>
+<script type="text/javascript"
+	src="<spring:message code="domain"/>/js/lib/jquery.ui.dialog.js"></script>
+<script type="text/javascript"
+	src="<spring:message code="domain"/>/js/lib/jquery.ui.position.js"></script>
+<script type="text/javascript"
+	src="<spring:message code="domain"/>/js/lib/spin.js"></script>
+<script type="text/javascript"
+	src="<spring:message code="domain"/>/js/config.js"></script>
+<script type="text/javascript"
+	src="<spring:message code="domain"/>/js/common.js"></script>
+<script type="text/javascript"
+	src="<spring:message code="domain"/>/js/gui.js"></script>
