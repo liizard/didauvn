@@ -4,123 +4,12 @@
 
 <div ng-controller="PlaceCtrl">
 	<div id="wrapperFeedback" ng-controller="FeedbackCtrl">
-		<div id="feedbackFunction">
-			<div id="wrapperWow" ng-controller="WowCtrl">
-				<img id="wowbt" ng-click="WowPlace();" alt=""
-					src="<spring:message code="domain"/>/img/res/icon/wow.png" />
-
-				<div id="haiz">
-					<table border="0" cellpadding="0" cellspacing="0">
-						<tr>
-							<td class="haizArrow"><img alt=""
-								src="<spring:message code="domain"/>/img/res/haizArrow.png" />
-							</td>
-						</tr>
-						<tr>
-							<td id="content">
-								<div>What a beautiful place !</div>
-								<div style="border-top: solid thin #d5d5d5; cursor: pointer;"
-									ng-click="HaizPlace()">
-									<p>Haiz</p>
-								</div>
-							</td>
-						</tr>
-					</table>
-				</div>
-			</div>
-
-			<div id="share">
-				<a ng-click="sharePlace()"> <img alt=""
-					src="<spring:message code="domain"/>/img/res/icon/share.png" />
-				</a>
-			</div>
-			<div id="shareByEmail-wrapper" style="position: relative">
-				<a id="toogleEmailSharingDiv"> <img alt=""
-					src="<spring:message code="domain"/>/img/res/icon/sharemail.png" />
-				</a>
-
-				<div id="shareByEmail" style="display:none;">
-					<table>
-						<tr>
-							<td>
-								<ul ng-repeat="email in shareemailreq.emails"
-									style="list-style: none;background-color:#f4ea7a">
-									<li ng-click="deleteEmail($index)">{{email.email}}</li>
-								</ul>
-					 		</td>
-						</tr>
-						<tr>
-							<td> 
-								<form ng-submit="addSharedEmail()">
-									<input type="text" class="text" size="30" ng-model="newemail"
-										placeholder="add new email here" id="emailsshared" /> <input
-										type="submit" class="button" value="Add" />
-								</form>
-						 	</td>
-						</tr>
-						<tr>
-							<td> 
-								<textarea ng-model="notes" rows="2" cols="20"></textarea>
-
-								<input type="button" class="button" value="Send"
-								ng-click="sendMailAll()" />
-					 		</td>
-						</tr>
-					</table> 
-
-				</div>
-			</div>
-			<div id="comment"></div>
-		</div>
-
-		<div id="note">
-			<table border="0" cellpadding="0" cellspacing="0">
-				<tr>
-					<td class="noteArrow"><img alt=""
-						src="<spring:message code="domain"/>/img/res/noteArrow.png" /></td>
-				</tr>
-				<tr>
-					<td id="noteContent">
-						<p>{{langUser.gender}} : {{currentUser.gender}}</p>
-						<p>{{langUser.birthday}} : {{currentUser.birthday}}</p>
-						<p>{{langUser.createdate}} : {{currentUser.createdate}}</p>
-						<p ng-show="currentUser.profileFB!=null">
-							<a href="{{currentUser.profileFB}}" target="_blank">{{langUser.profilefb}}</a>
-						</p>
-					</td>
-				</tr>
-			</table>
-		</div>
-               <fb:comments href="http://9gag.com/gag/5582966" num_posts="2" width="470"></fb:comments>
-		<div class="fb-like"></div>
-		<div id="feedbackInput">
-			<textarea id="areaFeedback" rows="3" ng-model="feedbackCont.content"></textarea>
-			<input type="button" class="button" value="{{langCommon.submit}}"
-				ng-click="newFeedback()" />
-		</div>
-		<div id="feedbackEntries">
-			<div class="feedbackEntry" ng-repeat="feedback in feedbacks">
-				<img
-					ng-src="<spring:message code="domain"/>/img/user/{{feedback.avatar}}.jpg" />
-				<div class="entryMain">
-					<p class="entryName">
-						<a class="personPopupTrigger" rel="{{feedback.userId}}">{{feedback.userName}}</a>
-						{{feedback.cont}}
-					</p>
-					<p class="entryDate">{{feedback.createDate |
-						date:langCommon.dateFormat}}</p>
-
-				</div>
-				<div class="entryOption"
-					ng-show="userSession.user.uid==feedback.userId">
-					<a href ng-click="deleteFeedback($index)">[x]</a>
-				</div>
-			</div>
-			<div align="right" style="padding-right: 20px;">
-				<a class="action" ng-show="getMoreRq.viewMore==true" href
-					ng-click="getFeedbacks()">{{langCommon.viewmore}}>></a>
-			</div>
-		</div>
+		<fb:like
+			href="http://developers.facebook.com/docs/reference/plugins/like/"
+			send="true" width="410" show_faces="true"></fb:like>
+		<br><br>
+		<fb:comments href="http://9gag.com/gag/5582966" num_posts="2"
+			width="410"></fb:comments>
 	</div>
 
 	<div id="placeInfo">
@@ -158,7 +47,8 @@
 				<a href="" ng-click="reportPlace()">{{langCommon.report}}</a>
 			</div>
 			<div id="placeOption">
-				<a ng-show="userSession.ownerPlaces.indexOf(place.id)>-1 || userSession.admin==true"
+				<a
+					ng-show="userSession.ownerPlaces.indexOf(place.id)>-1 || userSession.admin==true"
 					href="<spring:message code="domain"/>/place/#/setting/{{place.id}}">{{langCommon.admin}}</a>&nbsp;&nbsp;<a
 					ng-show="userSession.ownerPlaces.indexOf(place.id)>-1 || userSession.managerPlaces.indexOf(place.id)>-1|| userSession.admin==true"
 					href="<spring:message code="domain"/>/place/#/update/general/{{place.id}}">{{langCommon.update}}</a>
