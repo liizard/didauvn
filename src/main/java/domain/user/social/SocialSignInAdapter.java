@@ -53,20 +53,23 @@ public class SocialSignInAdapter implements SignInAdapter {
 	@Override
 	public String signIn(String localUserId, Connection<?> connection,
 			NativeWebRequest request) {
-		
-		//Get user with the social ID: localUserId
+
+		// Get user with the social ID: localUserId
 		User user = userDao.findById(Long.parseLong(localUserId));
-		
+
 		if (user != null && user.getStatus() == 1) {
 			List<GrantedAuthority> auths = new ArrayList<GrantedAuthority>();
 			auths.add(new SimpleGrantedAuthority("ROLE_USER"));
+			if (userDao.isAdmin(user.getUid())) {
+				auths.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+			}
 			SecureUser secureUser = new SecureUser(user, auths);
 			Authentication authentication = new UsernamePasswordAuthenticationToken(
 					secureUser, secureUser.getPassword(),
 					secureUser.getAuthorities());
 			SecurityContextHolder.getContext()
 					.setAuthentication(authentication);
-			
+
 			// Return page when login process successfully
 			return SocialConfig.SOCIAL_CONNECT_SUCCESS_URL;
 		} else {

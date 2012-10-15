@@ -15,15 +15,6 @@ function PlaceCtrl($rootScope, $scope, $http, $routeParams) {
 				});
 	};
 
-	$scope.sharePlace = function() {
-		var fbDcrp = clearHTMLTag($scope.place.dcrp);
-		shareFacebook(DOMAIN + '/img/gallery/thumb/' + $scope.place.avatar,
-				$scope.place.name, $scope.place.address + ' '
-						+ $scope.place.streetName + ',' + $scope.place.wardName
-						+ ',' + $scope.place.districtName + ','
-						+ $scope.place.cityName, fbDcrp);
-	};
-	
 	$scope.directionLink = "";
 	$scope.initDirectionLink = function() {
 		getCurrentLocation();

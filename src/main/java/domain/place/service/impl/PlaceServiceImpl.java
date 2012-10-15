@@ -150,7 +150,7 @@ public class PlaceServiceImpl implements PlaceService {
 			placeDao.updateViewCount(id);
 			ids.add(id);
 		}
-		placeDetail.setWowCount(placeDao.getWowCount(id));
+		//placeDetail.setWowCount(placeDao.getWowCount(id));
 		return placeDetail;
 	}
 
