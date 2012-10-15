@@ -9,8 +9,8 @@ module
 						function($rootScope, $routeParams, $location, $http) {
 							var interval = null;
 							$rootScope.routeSecChange = function() {
-								
-								//ADMIN ROLE can access anywhere
+
+								// ADMIN ROLE can access anywhere
 								if ($rootScope.userSession.admin) {
 									return;
 								}
@@ -61,6 +61,13 @@ module
 										$location.path('login');
 									}
 								}
+
+								if (location.indexOf('/admin/#/') > -1) {
+									if (!$rootScope.userSession.user.admin) {
+										document.location.href = DOMAIN;
+									}
+								}
+
 							};
 							$rootScope.checkNotify = function() {
 								if ($rootScope.userSession.user.uid > 0) {

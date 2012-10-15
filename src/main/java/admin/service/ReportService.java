@@ -23,10 +23,6 @@ public interface ReportService {
 
 	public PageBuilder<ReportItem> getByFilter(ReportFilterRq reportRq);
 
-	public void batchDelete(int[] reportItemIdArr);
-
-	public void batchProcess(int[] reportItemIdArr);
-
 	public void process(int reportId);
 
 	public void delete(int reportId);

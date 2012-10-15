@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import admin.dao.BanDao;
@@ -28,6 +29,7 @@ public class BanServiceImpl implements BanService {
 	private UserDao userDao;
 
 	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public List<BanRq> getBans() {
 		List<Ban> bans = banDao.getBans();
 		List<BanRq> banRqs = new ArrayList<BanRq>();
@@ -42,6 +44,7 @@ public class BanServiceImpl implements BanService {
 	}
 
 	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public BanRq getBan(long id) {
 		Ban ban = banDao.getBan(id);
 		return new BanRq(ban.getId(), userDao.findById(ban.getUserId())
@@ -50,6 +53,7 @@ public class BanServiceImpl implements BanService {
 	}
 
 	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public void deleteBan(long id) {
 		Ban ban = banDao.getBan(id);
 		banDao.deleteBan(id);
@@ -57,6 +61,7 @@ public class BanServiceImpl implements BanService {
 	}
 
 	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public BanRq insertBan(BanRq banRq) throws DdException {
 		User user = userDao.getUserByEmail(banRq.getUser());
 		if (user == null) {
@@ -91,6 +96,7 @@ public class BanServiceImpl implements BanService {
 	}
 
 	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public void updateBan(BanRq banRq) throws DdException {
 		validateNoDay(banRq.getNoDay());
 		validateBanDate(banRq.getBanDate());
@@ -107,6 +113,7 @@ public class BanServiceImpl implements BanService {
 	}
 
 	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public void saveBan(BanRq banRq) throws DdException {
 		if (banRq.getId() == 0)
 			insertBan(banRq);
@@ -115,6 +122,7 @@ public class BanServiceImpl implements BanService {
 	}
 	
 	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public long getPageNumber() {
 		long pageNum = 0;
 		pageNum = (long) Math.ceil((double) banDao.countBans()
@@ -123,6 +131,7 @@ public class BanServiceImpl implements BanService {
 	}
 	
 	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public List<BanRq> getBansByPage(int page) {
 		List<Ban> bans = banDao.getBansByPage(
 				page * WebConstant.ADMIN_BAN_PER_PAGE,

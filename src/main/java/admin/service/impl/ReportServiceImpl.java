@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import admin.dao.ReportDao;
@@ -28,7 +29,6 @@ import admin.model.req.ReportRq;
 import admin.service.ReportService;
 import core.constant.WebConstant;
 import core.exception.DdException;
-import core.util.SecurityUtil;
 import domain.attribute.model.rq.PageRq;
 
 @Service("reportService")
@@ -38,6 +38,7 @@ public class ReportServiceImpl implements ReportService {
 	private ReportDao reportDao;
 
 	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public long getPageCount() {
 		long pageNum = 0;
 		pageNum = (long) Math.ceil((double) reportDao.getPageCount()
@@ -46,6 +47,7 @@ public class ReportServiceImpl implements ReportService {
 	}
 
 	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public List<ReportItem> getByPage(PageRq pageRq) {
 		List<ReportItem> items = reportDao.getByPage(pageRq.getPage()
 				* WebConstant.ADMIN_REPORT_PER_PAGE,
@@ -54,47 +56,40 @@ public class ReportServiceImpl implements ReportService {
 	}
 
 	@Override
-	public void batchDelete(int[] reportItemIdArr) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void batchProcess(int[] reportItemIdArr) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public void process(int reportId) {
 		reportDao.process(reportId);
 	}
 
 	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public void delete(int reportId) {
 		reportDao.delete(reportId);
 	}
 
 	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public List<ReportItem> getPendings() {
 		List<ReportItem> reportItemList = reportDao.getPendings();
 		return reportItemList;
 	}
 
 	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public List<ReportItem> getResolveds() {
 		List<ReportItem> reportItemList = reportDao.getResolveds();
 		return reportItemList;
 	}
 
 	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public PageBuilder<ReportItem> getByFilter(ReportFilterRq reportRq) {
 		return reportDao.getByFilter(reportRq);
 	}
 
 	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public long insert(ReportRq reportRq) throws DdException {
-		SecurityUtil.secureTextToPlain(reportRq.getDcrp());
 		validate(reportRq);
 		return reportDao.insert(reportRq);
 	}
@@ -112,6 +107,7 @@ public class ReportServiceImpl implements ReportService {
 	}
 
 	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public List<ReportType> getType() {
 		List<ReportType> list = new ArrayList<ReportType>();
 		list.add(new ReportType(-1,  "All"));
