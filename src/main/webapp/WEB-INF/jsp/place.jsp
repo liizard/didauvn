@@ -99,7 +99,7 @@
 				return;
 			js = d.createElement(s);
 			js.id = id;
-			js.src = "//connect.facebook.net/vi_VN/all.js#xfbml=1&appId=282452015099448";
+			js.src = "//connect.facebook.net/vi_VN/all.js#xfbml=1&appId=279086642209963";
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
