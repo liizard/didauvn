@@ -24,8 +24,7 @@
 								<a
 									href="<spring:message code="domain"/>/place#/view/{{searchPlace.id}}">{{searchPlace.name}}<span
 									ng-show="searchPlace.tagName!=null">
-										&nbsp;|&nbsp;{{searchPlace.tagName}}</span>
-								</a>
+										&nbsp;|&nbsp;{{searchPlace.tagName}}</span> </a>
 							</div>
 							<div class="oneResultInfo">
 								<table border="0" cellpadding="0" cellspacing="0">
@@ -72,7 +71,8 @@
 									onclick="getCurrentLocation()">{{langSearch.currentLocation}}</a>
 								</td>
 								<td style="padding-left: 20px;"><a target="_blank"
-									ng-href="{{directionLink}}">{{langSearch.getMeThere}}</a></td>
+									ng-href="{{directionLink}}">{{langSearch.getMeThere}}</a>
+								</td>
 							</tr>
 						</table>
 					</div>
@@ -80,15 +80,17 @@
 					<div id="oneMapResult" style="display: table-cell;"
 						ng-hide="oneMapPlace == undefined">
 						<div class="oneResultAvatar">
-							<a href="<spring:message code="domain"/>/place/#/view/{{oneMapPlace.id}}"><img alt=""
+							<a
+								href="<spring:message code="domain"/>/place/#/view/{{oneMapPlace.id}}"><img
+								alt=""
 								ng-src="<spring:message code="domain"/>/img/gallery/thumb/{{oneMapPlace.avatar}}.jpg" />
 							</a>
 						</div>
 						<div class="oneResultName">
-							<a href="<spring:message code="domain"/>/place/#/view/{{oneMapPlace.id}}">{{oneMapPlace.name}}<span
+							<a
+								href="<spring:message code="domain"/>/place/#/view/{{oneMapPlace.id}}">{{oneMapPlace.name}}<span
 								ng-show="oneMapPlace.tagName!=null">
-									&nbsp;|&nbsp;{{oneMapPlace.tagName}}</span>
-							</a>
+									&nbsp;|&nbsp;{{oneMapPlace.tagName}}</span> </a>
 						</div>
 						<div class="oneResultInfo">
 							<table border="0" cellpadding="0" cellspacing="0">
@@ -116,10 +118,10 @@
 						</div>
 					</div>
 
-					<!-- <div style="clear: both; padding-left: 15px; display: table-row;">
+					<div style="clear: both; padding-left: 15px; display: table-row;">
 						<a class="action" ng-show="searchOption.viewmore==1" href
 							ng-click="getMore()">{{langCommon.viewmore}}>></a>
-					</div> -->
+					</div>
 
 				</div>
 			</div>

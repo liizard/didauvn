@@ -24,10 +24,8 @@ html,body {
 	display: table;
 	min-height: 100%;
 	width: 100%;
-	/*padding-left: 90px;*/
-	/* position: absolute;
-	top: 52px; */
 	margin-top: 50px;
+	padding: 30px;
 }
 
 /*****Main menu*****/
@@ -41,6 +39,7 @@ html,body {
 	position: fixed;
 	top: 0px;
 	left: 0px;
+	height: 50px;
 }
 
 #header img {
@@ -55,7 +54,11 @@ html,body {
 }
 
 #header #menu {
-	
+	float: left;
+}
+
+#header #menu table td{
+	vertical-align: top;
 }
 
 #header #user {
@@ -226,10 +229,6 @@ table {
 
 table td {
 	padding-left: 10px;
-}
-
-table.modify {
-	padding: 30px;
 }
 
 table.modify th {

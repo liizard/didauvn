@@ -30,7 +30,6 @@ public class PlaceDetail {
 	private String cityName;
 	private String locationX;
 	private String locationY;
-	private int wowCount;
 
 	
 	public PlaceDetail(long id, long avatar, String name, String dcrp,
@@ -194,13 +193,4 @@ public class PlaceDetail {
 		this.locationY = locationY;
 	}
 	
-	public int getWowCount() {
-		return wowCount;
-	}
-
-	public void setWowCount(int wowCount) {
-		this.wowCount = wowCount;
-	}
-
-
 }

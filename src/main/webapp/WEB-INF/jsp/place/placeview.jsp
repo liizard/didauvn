@@ -3,6 +3,7 @@
 <%@ include file="../inc/taglib.jsp"%>
 
 <div ng-controller="PlaceCtrl">
+<<<<<<< HEAD
 	<div id="wrapperFeedback" ng-controller="FeedbackCtrl">
 		<fb:like
 			href="http://developers.facebook.com/docs/reference/plugins/like/"
@@ -10,6 +11,33 @@
 		<br><br>
 		<fb:comments href="http://9gag.com/gag/5582966" num_posts="2"
 			width="410"></fb:comments>
+=======
+	<div id="wrapperFeedback">
+		<div id="note">
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="noteArrow"><img alt=""
+						src="<spring:message code="domain"/>/img/res/noteArrow.png" /></td>
+				</tr>
+				<tr>
+					<td id="noteContent">
+						<p>{{langUser.gender}} : {{currentUser.gender}}</p>
+						<p>{{langUser.birthday}} : {{currentUser.birthday}}</p>
+						<p>{{langUser.createdate}} : {{currentUser.createdate}}</p>
+						<p ng-show="currentUser.profileFB!=null">
+							<a href="{{currentUser.profileFB}}" target="_blank">{{langUser.profilefb}}</a>
+						</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<fb:comments href="http://9gag.com/gag/5582966" num_posts="2"
+			width="470"></fb:comments>
+		<fb:like
+			href="http://developers.facebook.com/docs/reference/plugins/like/"
+			send="true" width="450" show_faces="true"></fb:like>
+
+>>>>>>> branch 'master' of https://github.com/liizard/didauvn.git
 	</div>
 
 	<div id="placeInfo">
@@ -35,11 +63,6 @@
 						<img style="vertical-align: middle;" alt=""
 							src="<spring:message code="domain"/>/img/res/icon/phone.png" />
 						{{place.phone}}
-					</p>
-					<p>
-						<img style="vertical-align: middle;" alt=""
-							src="<spring:message code="domain"/>/img/res/icon/wow (mini).png" />&nbsp;&nbsp;<span
-							class="numberWow">{{place.wowCount}}</span>
 					</p>
 				</div>
 			</div>

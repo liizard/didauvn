@@ -13,7 +13,7 @@ import domain.attribute.service.ShareService;
 
 @Controller
 public class ShareController {
-
+/*
 	@Autowired
 	private ShareService shareService;
 	
@@ -28,5 +28,5 @@ public class ShareController {
 	@ResponseBody
 	public ShareEmailRq getShareEmailTemplate() {
 		return new ShareEmailRq();
-	}
+	}*/
 }

@@ -135,7 +135,6 @@ function SearchCtrl($cookieStore, $rootScope, $scope, $http) {
 	};
 
 	// * Initial
-	downSearch();
 	$scope.searchPlace();
 
 }

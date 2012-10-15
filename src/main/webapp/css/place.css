@@ -1,6 +1,6 @@
 #placeInfo {
 	background-color: #ffffff;
-	margin: 30px 360px 30px 30px;
+	margin: 0px 470px 0px 0px;
 }
 
 #wrapperPlaceOverview {
@@ -156,9 +156,10 @@
 
 /*****Feedback*****/
 #wrapperFeedback {
-	width: 310px;
+	width: 410px;
 	background-color: #ffffff;
-	margin: 0px 30px 30px 0px;
+	margin: 0px 0px 0px 0px;
+	padding: 20px 20px 20px 20px;
 	float: right;
 	
 }
@@ -421,21 +422,16 @@
 
 /*****Update*****/
 #divAdditionalUpdate {
-	padding: 30px;
 }
 
 #divNewsUpdate {
-	padding: 30px;
 }
 
 #divGeneraUpdate {
-	padding: 30px;
 }
 
 #divImageUpdate {
-	padding: 30px;
 }
 
 #divVideoUpdate {
-	padding: 30px;
 }
