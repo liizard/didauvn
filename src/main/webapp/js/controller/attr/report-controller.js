@@ -3,8 +3,7 @@ function ReportSubmitCtrl($scope, $rootScope, $http,  errorHandlerService, valid
 	$scope.report.user = 0;
 	
 	$scope.submit = function() {
-		validationService.checkLogin('err261', $scope.langUser.notlogin);
-		$scope.report.user = $rootScope.userSession.user.uid;
+		//$scope.report.user = $rootScope.userSession.user.uid;
 		$scope.report.processed = false;
 		$http.post(DOMAIN + '/admin/data/report/submit', $scope.report).success(
 				function(data) {
@@ -43,6 +42,7 @@ function ReportSubmitCtrl($scope, $rootScope, $http,  errorHandlerService, valid
 	var dialog;
 	
 	$scope.popup = function() {
+		validationService.checkLogin('err261', $scope.langUser.notlogin);
 		if (dialog == null) {
 			dialog = $("#popupReport").dialog({
 				title : $scope.langCommon.reason,

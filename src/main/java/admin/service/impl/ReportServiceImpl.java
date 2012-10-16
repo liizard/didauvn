@@ -28,6 +28,7 @@ import admin.model.req.ReportFilterRq;
 import admin.model.req.ReportRq;
 import admin.service.ReportService;
 import core.constant.WebConstant;
+import core.context.ContextHolder;
 import core.exception.DdException;
 import domain.attribute.model.rq.PageRq;
 
@@ -90,6 +91,7 @@ public class ReportServiceImpl implements ReportService {
 	@Override
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public long insert(ReportRq reportRq) throws DdException {
+		reportRq.setUser(ContextHolder.getInstance().getCurrentUserId());
 		validate(reportRq);
 		return reportDao.insert(reportRq);
 	}
