@@ -18,6 +18,8 @@ public class ReportRq {
 	public static final String DESCRIPTION_EMPTY = "Description is not specified";
 	public static final String DESCRIPTION_TOO_LONG_CODE = "err262";
 	public static final String DESCRIPTION_TOO_LONG = "Description is too long";
+	public static final String DUPLICATE_CODE = "err263";
+	public static final String DUPLICATE = "Report is Duplicate in 24 hour";
 	
 	private long id;
 	public String reportType;

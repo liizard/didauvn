@@ -27,4 +27,6 @@ public interface ReportDao {
 	public void delete(int reportId);
 	
 	public long insert(ReportRq reportRq);
+	
+	public boolean isDuplicate(ReportRq reportRq);
 }

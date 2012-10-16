@@ -255,7 +255,19 @@ public class ReportDaoImpl extends JdbcDaoSupport implements ReportDao {
 			}
 		}
 
-		//System.out.println(sql.toString());
+		// System.out.println(sql.toString());
 		return sql.toString();
+	}
+
+	@Override
+	public boolean isDuplicate(ReportRq reportRq) {
+		String sql = "SELECT ItemId, User FROM Reports WHERE ItemId = ? AND User = ? "
+				+ " AND HOUR(TIMEDIFF(Now(), CreateDate)) < 24 ";
+		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql,
+				reportRq.getItemId(), reportRq.getUser());
+		if (rows.isEmpty()) {
+			return false;
+		}
+		return true;
 	}
 }

@@ -17,8 +17,7 @@
 		<fb:comments href="http://9gag.com/gag/5582966" num_posts="2"
 			width="410"></fb:comments>
 	</div>
-
-	<div id="placeInfo">
+	<div id="placeInfo" ng-controller="ReportSubmitCtrl">
 
 		<div id="wrapperPlaceOverview">
 			<div id="placeAvatar">
@@ -44,9 +43,7 @@
 					</p>
 				</div>
 			</div>
-			<div ng-controller="ReportSubmitCtrl">
-				<a href="" ng-click="reportPlace()">{{langCommon.report}}</a>
-			</div>
+			<a href="" ng-click="reportPlace()">{{langCommon.report}}</a>
 			<div id="placeOption">
 				<a
 					ng-show="userSession.ownerPlaces.indexOf(place.id)>-1 || userSession.admin==true"
@@ -175,9 +172,7 @@
 						<img id="imgShow" style="border: none;" ng-click="hideImage();"
 							ng-src="<spring:message code="domain"/>/img/gallery/{{imageShow.id}}.jpg" />
 						<div id="divImgCaptionShow">{{imageShow.caption}}</div>
-						<div ng-controller="ReportSubmitCtrl">
-							<a href="" ng-click="reportImage(imageShow.id)">{{langCommon.report}}</a>
-						</div>
+						<a href="" ng-click="reportImage(imageShow.id)">{{langCommon.report}}</a>
 						<div id="divImgNevigatorShow">
 							<a ng-click="showPrevImage();"><img
 								title="{{langCommon.prev}}"
@@ -200,9 +195,7 @@
 								src="http://www.youtube.com/embed/{{v.href}}?autoplay=0&autohide=1&modestbranding=1&rel=0&showinfo=0&origin=http://localhost:8080"
 								frameborder="0"></iframe>
 							<p>{{v.caption}}</p>
-							<div ng-controller="ReportSubmitCtrl">
-								<a href="" ng-click="reportVideo(v.id)">{{langCommon.report}}</a>
-							</div>
+							<a href="" ng-click="reportVideo(v.id)">{{langCommon.report}}</a>
 						</div>
 					</div>
 					<div class="viewMore">
@@ -211,6 +204,13 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div id="popupReport" style="display: none">
+			<form>
+				<input type="text" size="100" class="text" ng-model="report.dcrp" />
+				<input type="button" class="button" value="{{langCommon.submit}}"
+					ng-click="submit()" />
+			</form>
 		</div>
 	</div>
 </div>

@@ -46,6 +46,7 @@
 
 "err261":"Report description is not specified",
 "err262":"Report description is too long",
+"err263":"You have to wait 1 day to report this again",
 
 "err280":"User is not existed",
 "err281":"Number of Day is Invalid",

@@ -104,14 +104,18 @@ public class ReportServiceImpl implements ReportService {
 					ReportRq.DESCRIPTION_TOO_LONG_CODE,
 					ReportRq.DESCRIPTION_TOO_LONG);
 		}
+		if (reportDao.isDuplicate(report)) {
+			throw new DdException(DdException.VALIDATION_EXCEPTION,
+					ReportRq.DUPLICATE_CODE, ReportRq.DUPLICATE);
+		}
 	}
 
 	@Override
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public List<ReportType> getType() {
 		List<ReportType> list = new ArrayList<ReportType>();
-		list.add(new ReportType(-1,  "All"));
-		for(ReportTypeEnum type: ReportTypeEnum.values()) {
+		list.add(new ReportType(-1, "All"));
+		for (ReportTypeEnum type : ReportTypeEnum.values()) {
 			list.add(new ReportType(type.ordinal(), type.name().toLowerCase()));
 		}
 		return list;

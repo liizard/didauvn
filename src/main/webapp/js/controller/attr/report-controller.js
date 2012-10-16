@@ -2,10 +2,8 @@ function ReportSubmitCtrl($scope, $rootScope, $http,  errorHandlerService, valid
 	$scope.report = {};
 	$scope.report.user = 0;
 	
-	$scope.reportSubmit = function(type) {
+	$scope.submit = function() {
 		validationService.checkLogin('err261', $scope.langUser.notlogin);
-		$scope.popup();
-		$scope.report.reportType = type;
 		$scope.report.user = $rootScope.userSession.user.uid;
 		$scope.report.processed = false;
 		$http.post(DOMAIN + '/admin/data/report/submit', $scope.report).success(
@@ -19,29 +17,41 @@ function ReportSubmitCtrl($scope, $rootScope, $http,  errorHandlerService, valid
 						title : $scope.langCommon.updateSuccess,
 						type : 'success',
 					});
+					$scope.report.dcrp = "";
+					dialog.dialog("close");
 				});
-	};
-	
-	$scope.popup = function() {
-		$scope.report.dcrp = prompt($scope.langCommon.reason + ": ", "");
-		if($scope.report.dcrp == null) {
-			$scope.report.dcrp = "";
-		}
 	};
 	
 	$scope.reportPlace = function() {
 		$scope.report.itemId = $scope.placeId;
-		$scope.reportSubmit('PLACE');
+		$scope.report.reportType = 'PLACE';
+		$scope.popup();
 	};
 	
 	$scope.reportImage = function(id) {
 		$scope.report.itemId = id;
-		$scope.reportSubmit('IMAGE');
+		$scope.report.reportType = 'IMAGE';
+		$scope.popup();
 	};
 	
 	$scope.reportVideo = function(id) {
 		$scope.report.itemId = id;
-		$scope.reportSubmit('VIDEO');
+		$scope.report.reportType = 'VIDEO';
+		$scope.popup();
+	};
+	
+	var dialog;
+	
+	$scope.popup = function() {
+		if (dialog == null) {
+			dialog = $("#popupReport").dialog({
+				title : $scope.langCommon.reason,
+				autoOpen : false,
+				height : 100,
+				width : 100
+			});
+		}
+		dialog.dialog("open");
 	};
 }
 ReportSubmitCtrl.$inject = ['$scope', '$rootScope', '$http', 'errorHandlerService', 'validationService'];
