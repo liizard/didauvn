@@ -17,8 +17,6 @@ module.config([ '$routeProvider', function($routeProvider) {
 		template : DOMAIN + '/placeupdate/image'
 	}).when('/update/video/:placeId', {
 		template : DOMAIN + '/placeupdate/video'
-	}).when('/update/news/:placeId', {
-		template : DOMAIN + '/placeupdate/news'
 	}).otherwise({
 		redirectTo : ''
 	});

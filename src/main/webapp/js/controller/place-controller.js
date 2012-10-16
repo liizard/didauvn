@@ -92,7 +92,7 @@ function PlaceNewCtrl($scope, $http, $location, businessTypeService,
 									$scope.langCommon.createFailed);
 
 							// Redirect to update page
-							$location.path('placeupdate/additional/' + data);
+							$location.path('update/additional/' + data);
 						});
 				clearTimeout(timeout);
 			}

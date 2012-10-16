@@ -72,8 +72,6 @@
 		src="<spring:message code="domain"/>/js/controller/attr/paymentmethod-controller.js"></script>
 	<script type="text/javascript"
 		src="<spring:message code="domain"/>/js/controller/attr/placetag-controller.js"></script>
-	<script type="text/javascript"
-		src="<spring:message code="domain"/>/js/controller/attr/news-controller.js"></script>
         <script type="text/javascript"
 		src="<spring:message code="domain"/>/js/controller/attr/report-controller.js"></script>
 

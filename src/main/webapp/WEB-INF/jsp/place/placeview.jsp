@@ -17,7 +17,8 @@
 		<fb:comments href="http://9gag.com/gag/5582966" num_posts="2"
 			width="410"></fb:comments>
 	</div>
-	<div id="placeInfo" ng-controller="ReportSubmitCtrl">
+
+	<div id="placeInfo">
 
 		<div id="wrapperPlaceOverview">
 			<div id="placeAvatar">
@@ -43,7 +44,9 @@
 					</p>
 				</div>
 			</div>
-			<a href="" ng-click="reportPlace()">{{langCommon.report}}</a>
+			<div ng-controller="ReportSubmitCtrl">
+				<a href="" ng-click="reportPlace()">{{langCommon.report}}</a>
+			</div>
 			<div id="placeOption">
 				<a
 					ng-show="userSession.ownerPlaces.indexOf(place.id)>-1 || userSession.admin==true"
@@ -52,23 +55,7 @@
 					href="<spring:message code="domain"/>/place/#/update/general/{{place.id}}">{{langCommon.update}}</a>
 			</div>
 		</div>
-
-
-		<div id="placeNews" ng-controller="NewsCtrl" ng-show="newsExist">
-			<div id="placeNewsTitle">
-				<img width="35" height="35" ng-show="news.promotion"
-					ng-src="<spring:message code="domain"/>/img/res/icon/white/discount.png"><img
-					width="35" height="35" ng-show="news.event"
-					ng-src="<spring:message code="domain"/>/img/res/icon/white/event.png">
-				&nbsp;{{news.title}}
-			</div>
-			<div id="placeNewsDesc">{{news.desc}}</div>
-			<img ng-show="news.image>0"
-				ng-src="<spring:message code="domain"/>/img/news/{{news.image}}.jpg" />
-			<div id="placeNewsCont" ng-bind-html="news.cont"></div>
-			<div style="clear: both;"></div>
-		</div>
-
+		
 		<div id="placeDetail">
 			<div id="tabHeader" class="placeMenu">
 				<a id="1" class="tab selectTabHeader">{{langPlace.description}}</a>
@@ -172,7 +159,9 @@
 						<img id="imgShow" style="border: none;" ng-click="hideImage();"
 							ng-src="<spring:message code="domain"/>/img/gallery/{{imageShow.id}}.jpg" />
 						<div id="divImgCaptionShow">{{imageShow.caption}}</div>
-						<a href="" ng-click="reportImage(imageShow.id)">{{langCommon.report}}</a>
+						<div ng-controller="ReportSubmitCtrl">
+							<a href="" ng-click="reportImage(imageShow.id)">{{langCommon.report}}</a>
+						</div>
 						<div id="divImgNevigatorShow">
 							<a ng-click="showPrevImage();"><img
 								title="{{langCommon.prev}}"
@@ -195,7 +184,9 @@
 								src="http://www.youtube.com/embed/{{v.href}}?autoplay=0&autohide=1&modestbranding=1&rel=0&showinfo=0&origin=http://localhost:8080"
 								frameborder="0"></iframe>
 							<p>{{v.caption}}</p>
-							<a href="" ng-click="reportVideo(v.id)">{{langCommon.report}}</a>
+							<div ng-controller="ReportSubmitCtrl">
+								<a href="" ng-click="reportVideo(v.id)">{{langCommon.report}}</a>
+							</div>
 						</div>
 					</div>
 					<div class="viewMore">
@@ -204,13 +195,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div id="popupReport" style="display: none">
-			<form>
-				<input type="text" size="100" class="text" ng-model="report.dcrp" />
-				<input type="button" class="button" value="{{langCommon.submit}}"
-					ng-click="submit()" />
-			</form>
 		</div>
 	</div>
 </div>

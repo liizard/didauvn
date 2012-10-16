@@ -18,6 +18,7 @@ module.factory('langService', [
 				$rootScope.errMsg = null;
 				$rootScope.langAdmin = null;
 				$rootScope.langTos = null;
+				$rootScope.langGuide = null;
 			};
 
 			// Get languages
@@ -121,11 +122,21 @@ module.factory('langService', [
 					});
 				}
 			};
+			
+			$rootScope.getLangGuide = function() {
+				if ($rootScope.langGuide == null) {
+					$http.get(
+							DOMAIN + '/json/lang/guide_' + $rootScope.lang
+									+ '.json').success(function(data) {
+						$rootScope.langGuide = data;
+					});
+				}
+			};			
 			// Get specified language for current page
 			$rootScope.chageLanguage = function() {
 				$rootScope.resetLang();
 				$rootScope.getLangCommon();
-				$rootScope.getLangTos();
+				
 				
 				var location = window.location.pathname;
 				if (location.indexOf('search') > -1) {
@@ -146,6 +157,7 @@ module.factory('langService', [
 					$rootScope.getLangAdmin();
 				} else if (location.indexOf('home') > -1) {
 					$rootScope.getLangTos();
+					$rootScope.getLangGuide();
 				}
 
 				

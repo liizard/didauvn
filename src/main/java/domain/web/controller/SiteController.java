@@ -140,10 +140,10 @@ public class SiteController {
 		return VIEW_BASE + "/place/videoupdate";
 	}
 
-	@RequestMapping(value = "placeupdate/news", method = RequestMethod.GET)
-	public String newsUpdate() {
-		return VIEW_BASE + "/place/newsupdate";
-	}
+//	@RequestMapping(value = "placeupdate/news", method = RequestMethod.GET)
+//	public String newsUpdate() {
+//		return VIEW_BASE + "/place/newsupdate";
+//	}
 
 	/* USER */
 	@RequestMapping(value = "user", method = RequestMethod.GET)

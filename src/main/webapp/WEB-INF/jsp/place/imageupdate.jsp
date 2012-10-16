@@ -8,8 +8,6 @@
 				<a class="action"
 				href="<spring:message code="domain"/>/place/#/update/additional/{{placeId}}">{{langPlace.additionalInfo}}</a>&nbsp;|&nbsp;
 				<a class="action"
-				href="<spring:message code="domain"/>/place/#/update/news/{{placeId}}">{{langPlace.news}}</a>&nbsp;|&nbsp;
-				<a class="action"
 				href="<spring:message code="domain"/>/place/#/update/video/{{placeId}}">{{langPlace.video}}</a>
 			</th>
 		</tr>
