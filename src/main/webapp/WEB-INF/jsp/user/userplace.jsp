@@ -67,32 +67,6 @@
 					</div>
 				</div></td>
 		</tr>
-		<tr>
-			<td class="title">{{langCommon.wow}}:</td>
-			<td class="cont">
-				<div ng-repeat="place in placewows">
-					<div id="wrapperPlaceOverview">
-						<div id="placeAvatar">
-							<a href="<spring:message code="domain"/>place/#/view/{{place.id}}"><img
-								alt="{{place.name}}" 
-								ng-src="<spring:message code="domain"/>/img/gallery/thumb/{{place.avatar}}.jpg">
-							</a>
-						</div>
-						<div id="placeOverview">
-							<b>{{place.name}}<span ng-show="place.tagName!=null">
-									&nbsp;|&nbsp;{{place.tagName}}</span> </b>
-							<div id="placeAddress">
-								<p>
-									<img style="vertical-align: middle;" alt=""
-										src="<spring:message code="domain"/>/img/res/icon/address.png" />
-									{{place.address}} {{place.streetName}}, {{place.wardName}},
-									{{place.districtName}}, {{place.cityName}}
-								</p>
-							</div>
-						</div>
-					</div>
-				</div></td>
-		</tr>
 	</table>
 
 </div>

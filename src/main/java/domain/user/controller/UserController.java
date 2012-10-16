@@ -107,11 +107,12 @@ public class UserController {
 	public List<PlaceGeneral> getPlaceManager() {
 		return userService.getPlaceManager();
 	}
-	@RequestMapping(value = "/getplacewow", method = RequestMethod.GET)
-	@ResponseBody
-	public List<PlaceGeneral> getPlaceWow() {
-		return userService.getPlaceWow();
-	}
+	
+//	@RequestMapping(value = "/getplacewow", method = RequestMethod.GET)
+//	@ResponseBody
+//	public List<PlaceGeneral> getPlaceWow() {
+//		return userService.getPlaceWow();
+//	}
 
 	@RequestMapping(value = "/upimg", method = RequestMethod.POST)
 	public String upImg(ModelMap model, HttpServletRequest request,

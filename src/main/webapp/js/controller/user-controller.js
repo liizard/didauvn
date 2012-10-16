@@ -4,7 +4,6 @@ function UserCtrl($rootScope, $scope, $http, errorHandlerService,validationServi
 	$scope.password2 = '';
 	$scope.placeowners = [];
 	$scope.placemanagers = [];
-	$scope.placewows = [];
 	$scope.images = [];
 	$scope.upload = [];
 
@@ -31,12 +30,6 @@ function UserCtrl($rootScope, $scope, $http, errorHandlerService,validationServi
 		$http.get(DOMAIN + '/data/user/getplacemanager').success(
 				function(data) {
 					$scope.placemanagers = data;
-				});
-	};
-	$scope.getPlaceWow = function() {
-		$http.get(DOMAIN + '/data/user/getplacewow').success(
-				function(data) {
-					$scope.placewows = data;
 				});
 	};
 
@@ -100,7 +93,6 @@ function UserCtrl($rootScope, $scope, $http, errorHandlerService,validationServi
 	$scope.getNewUserSession();
 	$scope.getPlaceOwner();
 	$scope.getPlaceManager();
-	$scope.getPlaceWow();
 
 	$(function() {
 		$.datepicker.setDefaults($.datepicker.regional[$rootScope.lang]);
