@@ -32,6 +32,11 @@ module.factory('pagingService', [
 				// -------- Get more function
 				getMore : function(CONSTANT, link, getMoreRq, listStore) {
 					$http.post(link, getMoreRq).success(function(data) {
+						// check if return data is empty
+						if(data.length == 0) {
+							return;
+						}
+						
 						var length = data.length;
 						if (length == (CONSTANT + 1)) {
 							length -= 1;
@@ -43,6 +48,7 @@ module.factory('pagingService', [
 						for ( var i = 0; i < length; i++) {
 							listStore.push(data[i]);
 						}
+						alert(link);
 						getMoreRq.lastId = data[length - 1].id;
 					});
 				},
@@ -50,6 +56,11 @@ module.factory('pagingService', [
 				// ----------- Get by Page function
 				getByPage : function(CONSTANT, link, pageRq, listStore) {
 					$http.post(link, pageRq).success(function(data) {
+						// check if return data is empty
+						if(data.length == 0) {
+							return;
+						}
+						
 						var length = data.length;
 						if (length == (CONSTANT + 1)) {
 							length -= 1;
@@ -63,6 +74,11 @@ module.factory('pagingService', [
 				// ----------- Get by Page function
 				getByPageNo : function(CONSTANT, link, page, listStore) {
 					$http.post(link + '/' + page).success(function(data) {
+						// check if return data is empty
+						if(data.length == 0) {
+							return;
+						}
+						
 						var length = data.length;
 						if (length == (CONSTANT + 1)) {
 							length -= 1;
