@@ -38,7 +38,7 @@ public class SecurityServiceImpl implements UserDetailsService, SecurityService 
 	public UserDetails loadUserByUsername(String email)
 			throws UsernameNotFoundException {
 
-		User user = userDao.getUserByEmail(email);
+/*		User user = userDao.getUserByEmail(email);
 		if (user != null && user.getStatus() == 1) {
 			// Add Roles attached with this user
 			List<GrantedAuthority> authList = new ArrayList<GrantedAuthority>();
@@ -50,7 +50,7 @@ public class SecurityServiceImpl implements UserDetailsService, SecurityService 
 
 			SecureUser secureUser = new SecureUser(user, authList);
 			return secureUser;
-		}
+		}*/
 		return null;
 	}
 

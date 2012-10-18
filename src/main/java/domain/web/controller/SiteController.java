@@ -170,6 +170,11 @@ public class SiteController {
 	public String userManager() {
 		return VIEW_BASE + "/user/usermanager";
 	}
+	
+	@RequestMapping(value = "user/admin", method = RequestMethod.GET)
+	public String userAdmin() {
+		return VIEW_BASE + "/user/useradmin";
+	}
 
 	@RequestMapping(value = "user/login", method = RequestMethod.GET)
 	public String login() {

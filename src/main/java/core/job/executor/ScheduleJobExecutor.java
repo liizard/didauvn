@@ -16,11 +16,11 @@ public class ScheduleJobExecutor {
 	@Autowired
 	private BanDao banDao;
 	
-	@Scheduled(cron="0 0 */2 * * ?")
-	public void truncateUserActivation() {
-		System.out.println("attempt to delete records from useractivation table...");
-		userDao.truncateUserActivationTable();
-	}
+//	@Scheduled(cron="0 0 */2 * * ?")
+//	public void truncateUserActivation() {
+//		System.out.println("attempt to delete records from useractivation table...");
+//		userDao.truncateUserActivationTable();
+//	}
 	
 	@Scheduled(cron="0 0 0 1/1 * ?")
 	public void updateUserStatusByBans() {

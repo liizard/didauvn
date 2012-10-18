@@ -4,6 +4,10 @@
 		<tr>
 			<th colspan="2">{{langCommon.owner}}&nbsp;|&nbsp;<a
 				class="action" href="<spring:message code="domain"/>/user/#/manager">{{langCommon.manager}}</a>
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+				&nbsp;|&nbsp;<a
+				class="action" href="<spring:message code="domain"/>/user/#/admin">{{langCommon.admin}}</a>
+				</sec:authorize>
 			</th>
 		</tr>
 		<tr>

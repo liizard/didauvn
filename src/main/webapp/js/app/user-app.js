@@ -7,6 +7,8 @@ module.config([ '$routeProvider', function($routeProvider) {
 		template : DOMAIN + '/user/place'
 	}).when('/manager', {
 		template : DOMAIN + '/user/manager'
+	}).when('/admin', {
+		template : DOMAIN + '/user/admin'
 	}).when('/login', {
 		template : DOMAIN + '/user/login'
 	}).when('/register', {
