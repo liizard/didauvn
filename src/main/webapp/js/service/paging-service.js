@@ -48,7 +48,6 @@ module.factory('pagingService', [
 						for ( var i = 0; i < length; i++) {
 							listStore.push(data[i]);
 						}
-						alert(link);
 						getMoreRq.lastId = data[length - 1].id;
 					});
 				},

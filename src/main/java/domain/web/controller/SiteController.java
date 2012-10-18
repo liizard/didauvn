@@ -151,10 +151,10 @@ public class SiteController {
 		return VIEW_BASE + "/user";
 	}
 
-	@RequestMapping(value = "user/view", method = RequestMethod.GET)
-	public String userView() {
-		return VIEW_BASE + "/user/userview";
-	}
+//	@RequestMapping(value = "user/view", method = RequestMethod.GET)
+//	public String userView() {
+//		return VIEW_BASE + "/user/userview";
+//	}
 
 //	@RequestMapping(value = "user/general", method = RequestMethod.GET)
 //	public String userGeneral() {
