@@ -37,10 +37,6 @@ public interface UserService {
 
 	public boolean checkEmail(String email);
 
-	public void changePassword(Password password) throws DdException;
-
-	public void updateProfile(User user) throws ParseException, DdException;
-
 	public User returnOAuthUser(WebRequest request) throws ParseException;
 
 	public UserSession getCurrentUser();
@@ -49,9 +45,9 @@ public interface UserService {
 
 	public List<PlaceGeneral> getPlaceManager();
 
-	public long insertImage(MultipartFile multipartFile) throws Exception;
-
-	public long getImage(long userId);
+//	public long insertImage(MultipartFile multipartFile) throws Exception;
+//
+//	public long getImage(long userId);
 
 	public boolean isSuccessfulActivation(long userId, String token);
 

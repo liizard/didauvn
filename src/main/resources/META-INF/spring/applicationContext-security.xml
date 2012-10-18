@@ -18,32 +18,17 @@
 
 	<security:http auto-config="true" use-expressions="true">
 		<security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
-		<security:intercept-url pattern="/user/admin" access="hasRole('ROLE_ADMIN')" />
-		<security:remember-me />
 
 		<security:intercept-url pattern="/login"
 			access="hasRole('ROLE_ANONYMOUS')" />
 
-		<security:form-login login-page="${sec.loginURL}"
-			authentication-failure-url="${sec.loginURL}" login-processing-url="${sec.loginpURL}"
-			username-parameter="${sec.username}" password-parameter="${sec.password}"
-			default-target-url="${sec.targetURL}" />
-
+		
 		<security:logout invalidate-session="true"
 			logout-success-url="${sec.loginURL}" logout-url="${sec.logoutURL}" />
 
 	</security:http>
 
-	<security:authentication-manager>
-		<security:authentication-provider
-			user-service-ref="securityService">
-			<security:password-encoder ref="passwordEncoder" />
-		</security:authentication-provider>
-	</security:authentication-manager>
-
-	<bean
-		class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"
-		id="passwordEncoder" />
+	<security:authentication-manager/>
 
 	<bean id="expressionHandler"
 		class="org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler">

@@ -1,4 +1,4 @@
-<div>
+<div id="divGuide">
 	<div id="bodyGuide" ng-repeat="content in langGuide.body">
 		<p>
 			<b>{{content.content_head}}</b>

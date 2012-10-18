@@ -22,10 +22,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class SecureUser implements UserDetails, Serializable {
 
 	private static final long serialVersionUID = 3207130705234235251L;
-	private User user;
+	private UserFB user;
 	private Collection<GrantedAuthority> authorities;
 
-	public SecureUser(User user, List<GrantedAuthority> authorities) {
+	public SecureUser(UserFB user, List<GrantedAuthority> authorities) {
 		this.user = user;
 		this.authorities = authorities;
 	}
@@ -37,12 +37,12 @@ public class SecureUser implements UserDetails, Serializable {
 
 	@Override
 	public String getPassword() {
-		return user.getPassword();
+		return "";
 	}
 
 	@Override
 	public String getUsername() {
-		return user.getEmail();
+		return "";
 	}
 
 	@Override
@@ -72,7 +72,7 @@ public class SecureUser implements UserDetails, Serializable {
 		}
 	}
 
-	public User getUser() {
+	public UserFB getUser() {
 		return user;
 	}
 

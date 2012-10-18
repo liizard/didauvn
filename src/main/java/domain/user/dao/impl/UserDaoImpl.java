@@ -36,6 +36,7 @@ import org.springframework.stereotype.Repository;
 import domain.user.dao.UserDao;
 import domain.user.model.Gender;
 import domain.user.model.User;
+import domain.user.model.UserFB;
 import domain.user.model.UserGeneral;
 
 @Repository
@@ -101,6 +102,16 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 		};
 		getJdbcTemplate().update(psc, keyHolder);
 		return keyHolder.getKey().longValue();
+	}
+
+	// Find User by ID
+	@Override
+	public UserFB findFBById(long id) {
+		String sql = "SELECT u.Id, u.Name, u.Status, uc.ImageUrl, uc.profileUrl FROM Users u "
+				+ "INNER JOIN UserConnection uc ON u.id=uc.UserId WHERE id=?";
+		List<Map<String, Object>> rows = getJdbcTemplate()
+				.queryForList(sql, id);
+		return rows.isEmpty() ? null : rowMapperUserFB(rows.get(0));
 	}
 
 	// Update User
@@ -188,12 +199,6 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 	}
 
 	@Override
-	public void changePassword(long id, String password) {
-		String sql = "Update registerusers SET password = ? WHERE User = ?";
-		getJdbcTemplate().update(sql, password, id);
-	}
-
-	@Override
 	public UserGeneral findUserViewById(long id) {
 		String sql = "SELECT id,name,gender,birthday,createdate from Users WHERE id=?";
 		List<Map<String, Object>> rows = getJdbcTemplate()
@@ -234,16 +239,14 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 			return null;
 	}
 
-	@Override
-	public long getImage(long userId) {
-		String sql = "SELECT Avatar FROM Users WHERE Id=?";
-		return getJdbcTemplate().queryForLong(sql, userId);
-	}
-
-	@Override
-	public void updateImage(long userId, long imageId) {
-		String sql = "UPDATE Users SET Avatar=? WHERE Id=?";
-		getJdbcTemplate().update(sql, imageId, userId);
+	private UserFB rowMapperUserFB(Map<String, Object> row) {
+		UserFB user = new UserFB();
+		user.setUid((Long) row.get("Id"));
+		user.setName((String) row.get("Name"));
+		user.setStatus((Integer) row.get("Status"));
+		user.setImgUrl((String) row.get("ImageUrl"));
+		user.setProfileUrl((String) row.get("ProfileUrl"));
+		return user;
 	}
 
 	private User rowMapperUser(Map<String, Object> row) {

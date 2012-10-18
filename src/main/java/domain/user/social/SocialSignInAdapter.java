@@ -49,13 +49,14 @@ import org.springframework.web.context.request.NativeWebRequest;
 import domain.user.dao.UserDao;
 import domain.user.model.SecureUser;
 import domain.user.model.User;
+import domain.user.model.UserFB;
 
 @Service
 public class SocialSignInAdapter implements SignInAdapter {
 	private static final Logger RUNTIME_LOGGER = Logger
 			.getLogger("runtimeLogger");
 	private static final Logger LOGGER = Logger.getLogger("mainLogger");
-	
+
 	@Autowired
 	private UserDao userDao;
 	@Autowired
@@ -66,32 +67,45 @@ public class SocialSignInAdapter implements SignInAdapter {
 			NativeWebRequest request) {
 		try {
 			// Get user with the social ID: localUserId
-			User user = userDao.findById(Long.parseLong(localUserId));
+			UserFB userFB = userDao.findFBById(Long.parseLong(localUserId));
 
-			if (user != null && user.getStatus() == 1) {
-					Facebook facebook = usersConnectionRepository
-							.createConnectionRepository(localUserId)
-							.findPrimaryConnection(Facebook.class).getApi();
-					FacebookProfile profile = facebook.userOperations()
-							.getUserProfile();
+			if (userFB != null && userFB.getStatus() == 1) {
+				User user = new User();
+
+				Facebook facebook = usersConnectionRepository
+						.createConnectionRepository(localUserId)
+						.findPrimaryConnection(Facebook.class).getApi();
+				FacebookProfile profile = facebook.userOperations()
+						.getUserProfile();
+
+				user.setUid(userFB.getUid());
+				user.setName(profile.getName());
+				if (profile.getBirthday() != null) {
 					user.setBirthday(profile.getBirthday());
+				}
+				if (profile.getGender() != null) {
 					user.setGender(profile.getGender());
-					user.setName(profile.getName());
-					if (profile.getHometown() != null)
-						user.setHomeTown(profile.getHometown().getName());
+				}
+				if (profile.getHometown() != null) {
+					user.setHomeTown(profile.getHometown().getName());
+				}
+				if (profile.getRelationshipStatus() != null) {
 					user.setrStatus(profile.getRelationshipStatus());
-					try {
-						userDao.update(user);
-					} catch (ParseException e) {
-						LOGGER.error("Facebook Get Info Error");
-						RUNTIME_LOGGER.error("Facebook Get Info Error", e);
-					}
+				}
+
+				try {
+					userDao.update(user);
+				} catch (ParseException e) {
+					LOGGER.error("Facebook Get Info Error");
+					RUNTIME_LOGGER.error("Facebook Get Info Error", e);
+				}
 				List<GrantedAuthority> auths = new ArrayList<GrantedAuthority>();
 				auths.add(new SimpleGrantedAuthority("ROLE_USER"));
 				if (userDao.isAdmin(user.getUid())) {
 					auths.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 				}
-				SecureUser secureUser = new SecureUser(user, auths);
+
+				SecureUser secureUser = new SecureUser(userFB, auths);
 				Authentication authentication = new UsernamePasswordAuthenticationToken(
 						secureUser, secureUser.getPassword(),
 						secureUser.getAuthorities());

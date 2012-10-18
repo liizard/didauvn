@@ -12,7 +12,6 @@
  */
 package domain.user.service.impl;
 
-import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,7 +22,6 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -32,24 +30,19 @@ import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.web.ProviderSignInUtils;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.FacebookProfile;
-import org.springframework.social.facebook.api.ImageType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.multipart.MultipartFile;
 
-import core.constant.SystemConstant;
 import core.context.ContextHolder;
 import core.exception.DdException;
 import core.job.SendMailJob;
 import core.job.executor.AsyncJobExecutor;
 import core.mail.MailService;
 import core.mail.TemplateEnum;
-import core.util.ImageUtil;
 import core.util.SecurityUtil;
 import domain.place.dao.PlaceDao;
 import domain.place.model.PlaceGeneral;
 import domain.user.dao.UserDao;
-import domain.user.model.Password;
 import domain.user.model.SecureUser;
 import domain.user.model.User;
 import domain.user.model.UserGeneral;
@@ -70,12 +63,6 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private AsyncJobExecutor executor;
-
-	private String[] allowType = { "image/gif", "image/jpeg", "image/pjpeg",
-			"image/png" };
-
-	private ImageUtil imageUtil = new ImageUtil(2 * 1024 * 1024,
-			".jpg.png.gif", allowType, SystemConstant.PATH_USER_AVATAR);
 
 	@Override
 	public UserGeneral getUser(long userId) {
@@ -159,21 +146,22 @@ public class UserServiceImpl implements UserService {
 		userDao.insertPassword(uid, md5Pass);
 
 		// Get Avatar from fb
-		if (user.isFacebookUser()) {
-			Connection<?> connection = ProviderSignInUtils
-					.getConnection(request);
-			Connection<Facebook> fbConnection = (Connection<Facebook>) connection;
-			long imageId = System.currentTimeMillis();
-			FileUtils
-					.writeByteArrayToFile(
-							new File(SystemConstant.PATH_USER_AVATAR + imageId
-									+ ".jpg"),
-							fbConnection.getApi().userOperations()
-									.getUserProfileImage(ImageType.SQUARE));
-			userDao.updateImage(ContextHolder.getInstance().getCurrentUserId(),
-					imageId);
-			ProviderSignInUtils.handlePostSignUp(String.valueOf(uid), request);
-		}
+		// if (user.isFacebookUser()) {
+		// Connection<?> connection = ProviderSignInUtils
+		// .getConnection(request);
+		// Connection<Facebook> fbConnection = (Connection<Facebook>)
+		// connection;
+		// long imageId = System.currentTimeMillis();
+		// FileUtils
+		// .writeByteArrayToFile(
+		// new File(SystemConstant.PATH_USER_AVATAR + imageId
+		// + ".jpg"),
+		// fbConnection.getApi().userOperations()
+		// .getUserProfileImage(ImageType.SQUARE));
+		// userDao.updateImage(ContextHolder.getInstance().getCurrentUserId(),
+		// imageId);
+		// ProviderSignInUtils.handlePostSignUp(String.valueOf(uid), request);
+		// }
 
 		return uid;
 	}
@@ -197,48 +185,7 @@ public class UserServiceImpl implements UserService {
 		} else
 			return false;
 	}
-
-	@PreAuthorize("hasRole('ROLE_USER')")
-	@Override
-	public void changePassword(Password password) throws DdException {
-
-		if (password.getOldpass().length() <= 0) {
-			throw new DdException(DdException.VALIDATION_EXCEPTION,
-					Password.OLDPASS_EMPTY_CODE, Password.OLDPASS_EMPTY);
-		}
-
-		if (password.getNewpass().length() <= 0) {
-			throw new DdException(DdException.VALIDATION_EXCEPTION,
-					Password.NEWPASS_EMPTY_CODE, Password.NEWPASS_EMPTY);
-		}
-
-		SecureUser user = (SecureUser) SecurityContextHolder.getContext()
-				.getAuthentication().getPrincipal();
-
-		if (!user.getPassword().equalsIgnoreCase(
-				SecurityUtil.getMd5String(password.getOldpass()))) {
-			throw new DdException(DdException.VALIDATION_EXCEPTION,
-					Password.OLDPASS_WRONG_CODE, Password.OLDPASS_WRONG);
-		}
-
-		String md5pass = SecurityUtil.getMd5String(password.getNewpass());
-		userDao.changePassword(user.getUser().getUid(), md5pass);
-		user.getUser().setPassword(md5pass);
-	}
-
-	@PreAuthorize("hasRole('ROLE_USER')")
-	@Override
-	public void updateProfile(User user) throws ParseException, DdException {
-		validateUpdate(user);
-		SecureUser secureUser = (SecureUser) SecurityContextHolder.getContext()
-				.getAuthentication().getPrincipal();
-		secureUser.getUser().setBirthday(user.getBirthday());
-		secureUser.getUser().setName(user.getName());
-		secureUser.getUser().setGender(user.getGender());
-		user.setUid(secureUser.getUser().getUid());
-		userDao.update(user);
-	}
-
+	
 	@Override
 	public User returnOAuthUser(WebRequest request) throws ParseException {
 		Connection<?> connection = ProviderSignInUtils.getConnection(request);
@@ -310,44 +257,44 @@ public class UserServiceImpl implements UserService {
 				.getCurrentLang().toString(), criteria.toString());
 	}
 
-	@Override
-	@PreAuthorize("hasRole('ROLE_USER')")
-	public long insertImage(MultipartFile multipartFile) throws Exception {
-		try {
-			// Get image and delete if not default image
-			long curImageId = getImage(ContextHolder.getInstance()
-					.getCurrentUserId());
-			if (curImageId > 0) {
-				imageUtil.deleteImg(curImageId + ".jpg");
-			}
-			long imageId = System.currentTimeMillis();
-			imageUtil.createThumbnail(multipartFile, imageId + ".jpg", 45);
-			userDao.updateImage(ContextHolder.getInstance().getCurrentUserId(),
-					imageId);
-			ContextHolder.getInstance().getCurrentUser().getUser()
-					.setAvatar(String.valueOf(imageId));
-			return imageId;
-		} catch (DdException e) {
-			if (e.getCode().equalsIgnoreCase(ImageUtil.FILE_SIZE_LIMIT_CODE)) {
-				throw new DdException(DdException.VALIDATION_EXCEPTION,
-						User.AVATAR_SIZE_LIMIT_CODE, User.AVATAR_SIZE_LIMIT, e);
-
-			} else if (e.getCode().equalsIgnoreCase(
-					ImageUtil.FILE_TYPE_NOT_ALLOW_CODE)) {
-				throw new DdException(DdException.VALIDATION_EXCEPTION,
-						User.AVATAR_TYPE_NOT_ALLOW_CODE,
-						User.AVATAR_TYPE_NOT_ALLOW, e);
-			} else {
-				throw e;
-			}
-		} catch (Exception e) {
-			throw e;
-		}
-	}
-
-	public long getImage(long userId) {
-		return userDao.getImage(userId);
-	}
+	// @Override
+	// @PreAuthorize("hasRole('ROLE_USER')")
+	// public long insertImage(MultipartFile multipartFile) throws Exception {
+	// try {
+	// // Get image and delete if not default image
+	// long curImageId = getImage(ContextHolder.getInstance()
+	// .getCurrentUserId());
+	// if (curImageId > 0) {
+	// imageUtil.deleteImg(curImageId + ".jpg");
+	// }
+	// long imageId = System.currentTimeMillis();
+	// imageUtil.createThumbnail(multipartFile, imageId + ".jpg", 45);
+	// userDao.updateImage(ContextHolder.getInstance().getCurrentUserId(),
+	// imageId);
+	// ContextHolder.getInstance().getCurrentUser().getUser()
+	// .setAvatar(String.valueOf(imageId));
+	// return imageId;
+	// } catch (DdException e) {
+	// if (e.getCode().equalsIgnoreCase(ImageUtil.FILE_SIZE_LIMIT_CODE)) {
+	// throw new DdException(DdException.VALIDATION_EXCEPTION,
+	// User.AVATAR_SIZE_LIMIT_CODE, User.AVATAR_SIZE_LIMIT, e);
+	//
+	// } else if (e.getCode().equalsIgnoreCase(
+	// ImageUtil.FILE_TYPE_NOT_ALLOW_CODE)) {
+	// throw new DdException(DdException.VALIDATION_EXCEPTION,
+	// User.AVATAR_TYPE_NOT_ALLOW_CODE,
+	// User.AVATAR_TYPE_NOT_ALLOW, e);
+	// } else {
+	// throw e;
+	// }
+	// } catch (Exception e) {
+	// throw e;
+	// }
+	// }
+	//
+	// public long getImage(long userId) {
+	// return userDao.getImage(userId);
+	// }
 
 	@Override
 	public boolean isSuccessfulActivation(long userId, String token) {

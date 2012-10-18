@@ -58,6 +58,11 @@ public class User implements Serializable {
 		this.password = "";
 		this.name = "";
 		this.birthday = "";
+		this.status = 0;
+		this.gender = "";
+		this.rStatus = "";
+		this.homeTown = "";
+		this.avatar = "";
 		this.isFacebookUser = false;
 	}
 
