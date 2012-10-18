@@ -1,4 +1,4 @@
-<div>
+<div id="divTOS">
 	{{langTos.introduction}}<br>
 	<br>
 	<div id="bodyTos" ng-repeat="content in langTos.body">
