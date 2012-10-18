@@ -13,23 +13,23 @@
 			</th>
 		</tr>
 		<tr>
-			<td class="title">{{langPlace.place}}:</td>
+			<td class="title">{{langPlace.place}} (*):</td>
 			<td class="cont"><input type="text" class="text"
 				ng-model="place.name" />
 			</td>
 		</tr>
 		<tr>
-			<td class="title">{{langPlace.business}}:</td>
+			<td class="title">{{langPlace.business}} (*):</td>
 			<td class="cont"><select ng-model="place.businessTypeId"
 				ng-options="t.id as t.name for t in businessTypes">
 			</select></td>
 		</tr>
 		<tr>
-			<td class="title">{{langPlace.location}}:</td>
+			<td class="title">{{langPlace.location}} (*):</td>
 			<td class="cont">
 				<table>
 					<tr>
-						<td>{{langLocation.district}}:</td>
+						<td align="right">{{langLocation.district}} (*):</td>
 						<td><select ng-change="getWards();"
 							ng-model="place.districtId"
 							ng-options="d.id as d.name for d in districts" id="cmbDistrict">
@@ -37,21 +37,21 @@
 						</td>
 					</tr>
 					<tr>
-						<td>{{langLocation.ward}}:</td>
+						<td align="right">{{langLocation.ward}} (*):</td>
 						<td><select ng-change="getStreets();" ng-model="place.wardId"
 							ng-options="w.id as w.name for w in wards" id="cmbWard">
 						</select>
 						</td>
 					</tr>
 					<tr>
-						<td>{{langLocation.street}}:</td>
+						<td align="right">{{langLocation.street}} (*):</td>
 						<td><select ng-model="place.streetId"
 							ng-options="s.id as s.name for s in streets" id="cmbStreet">
 						</select>
 						</td>
 					</tr>
 					<tr>
-						<td>{{langLocation.address}}:</td>
+						<td align="right">{{langLocation.address}} (*):</td>
 						<td><input type="text" class="text" ng-model="place.address" />
 						</td>
 					</tr>

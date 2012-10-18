@@ -17,9 +17,6 @@ function normalize(str) {
 	str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
 	str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
 	str = str.replace(/đ/g, "d");
-	// str= str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\\;|\'|
-	// |\"|\&|\#|\[|\]|~|$|_/g,"-");
-	// str= str.replace(/-+-/g,"-");
 	return str;
 };
 
@@ -69,27 +66,6 @@ function notifySuccess(title, text) {
 
 function clearHTMLTag(s) {
 	return s.replace(/<(?:.|\n)*?>/gm, '');
-}
-
-// Share on facebook function
-function shareFacebook(picture, name, caption, description) {
-	var w = 500;
-	var h = 300;
-	var left = (screen.width / 2) - (w / 2);
-	var top = (screen.height / 2) - (h / 2);
-	var windowShareFB = window.open(
-			"http://www.facebook.com/dialog/feed?app_id=" + FB_APP_ID
-					+ "&link=" + encodeURIComponent(document.URL) + "&picture="
-					+ encodeURIComponent(picture) + "&name="
-					+ encodeURIComponent(name) + "&caption="
-					+ encodeURIComponent(caption) + "&description="
-					+ encodeURIComponent(description)
-					+ "&display=popup&redirect_uri=" + DOMAIN
-					+ "/component/closepopup", 'name', 'height=' + h
-					+ ',width=' + w + ',left=' + left + ',top=' + top);
-	if (window.focus) {
-		windowShareFB.focus();
-	}
 }
 
 // Auto fix length of input textbox

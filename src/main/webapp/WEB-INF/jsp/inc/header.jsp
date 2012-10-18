@@ -1,5 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <div id="header">
-	<div style="clear: both; height: 50px;">
+	<div style="clear: both; height: 50px;" ng-cloak class="ng-cloak">
 		<div id="logo" title="">
 			<img alt="" src="<spring:message code="domain"/>/img/res/logo2.png">
 		</div>

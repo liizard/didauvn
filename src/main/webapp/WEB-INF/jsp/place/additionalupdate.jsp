@@ -12,13 +12,13 @@
 			</th>
 		</tr>
 		<tr>
-			<td class="title">Tags:</td>
+			<td class="title">{{langCommon.keyword}}:</td>
 			<td class="cont"><div id="divPlaceTagEdit"
 					ng-controller="PlaceTagCtrl">
 					<table>
 						<tr>
-							<td><input id="newtag" type="text" class="text" size="30"
-								placeholder="new tag" ng-model="tagRq.name"> <input type="hidden" class="text"
+							<td><input id="newtag" type="text" class="text" style="width: 300px;"
+								ng-model="tagRq.name"> <input type="hidden" class="text"
 								id="newid" />
 							</td>
 							<td></td>
@@ -33,7 +33,8 @@
 							<td colspan="2"><input type="button" class="button"
 								value="{{langCommon.save}}" ng-click="saveTags()">&nbsp;&nbsp;<input
 								type="button" class="button" ng-click="goPlace();"
-								value="{{langCommon.cancel}} & {{langCommon.back}}" />
+								value="{{langCommon.cancel}} & {{langCommon.back}}" /><br>
+							<br>
 							</td>
 						</tr>
 					</table>
@@ -53,14 +54,15 @@
 								ng-model="paymentMethods.payByVisa" />&nbsp;<span>Visa</span>
 							</td>
 							<td><input type="checkbox"
-								ng-model="paymentMethods.payByMasterCard" />&nbsp;<span>MasterCard</span>
+								ng-model="paymentMethods.payByMasterCard" />&nbsp;<span>Master Card</span>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="3"><input type="button" class="button"
 								ng-click="updatePaymentMethods()" value="{{langCommon.save}}" />&nbsp;&nbsp;<input
 								type="button" class="button" ng-click="goPlace();"
-								value="{{langCommon.cancel}} & {{langCommon.back}}" />
+								value="{{langCommon.cancel}} & {{langCommon.back}}" /><br>
+							<br>
 							</td>
 						</tr>
 					</table>
@@ -96,7 +98,7 @@
 							<td colspan="6"><input type="button" class="button"
 								ng-click="saveOperationHour()" value="{{langCommon.save}}" />&nbsp;&nbsp;<input
 								type="button" class="button" ng-click="goPlace();"
-								value="{{langCommon.cancel}} & {{langCommon.back}}" />
+								value="{{langCommon.cancel}} & {{langCommon.back}}" /><br>
 							</td>
 						</tr>
 					</table>

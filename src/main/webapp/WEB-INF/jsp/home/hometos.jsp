@@ -1,9 +1,12 @@
-<div ng-controller="ToSCtrl">
-	{{langTos.introduction}}
+<div>
+	{{langTos.introduction}}<br>
+	<br>
 	<div id="bodyTos" ng-repeat="content in langTos.body">
-		<p><b>{{content.content_head}}</b></p>
+		<p>
+			<b>{{content.content_head}}</b>
+		</p>
 		<p>{{content.content_body}}</p>
-		<br/>
+		<br />
 	</div>
-	
+
 </div>

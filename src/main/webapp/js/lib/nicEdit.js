@@ -23,7 +23,6 @@ bkClass.extend = function(def) {
   classDef.extend = this.extend;      
   return classDef;
 };
-
 var bkElement = bkClass.extend({
 	construct : function(elm,d) {
 		if(typeof(elm) == "string") {

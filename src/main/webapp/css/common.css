@@ -10,11 +10,15 @@
 	line-height: 18px;
 }
 
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none;
+}
+
 select {
 	border: solid thin #aaa;
 	box-shadow: inset 1px 1px 10px rgba(0, 0, 0, .1);
 	padding: 5px;
-	width: 210px;
+	width: 230px;
 }
 
 input.text,textarea {
@@ -22,7 +26,7 @@ input.text,textarea {
 	border: solid thin #aaa;
 	box-shadow: inset 1px 1px 10px rgba(0, 0, 0, .1);
 	padding: 5px;
-	width: 200px;
+	width: 220px;
 }
 
 input.file {

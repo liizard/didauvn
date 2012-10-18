@@ -46,9 +46,9 @@
 "have":"Bạn có ",
 "uploadImageFail":"Thêm ảnh không thành công",
 "unreadmsg":" tin nhắn chưa đọc",
-"emailsent":"Đã gửi email!",
-"emailnotsent":"Email gửi đi thất bại!",
-"emaiduplicate":"Email này đã nằm trong danh sách!",
+"emailsent":"Gửi email thành công",
+"emailnotsent":"Gửi email thất bại",
+"emaiduplicate":"Email này đã nằm trong danh sách",
 "reason":"Lý do",
 "report":"Báo cáo"
 }

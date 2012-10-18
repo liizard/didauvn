@@ -47,9 +47,9 @@
 "have":"You have ",
 "uploadImageFail":"Upload Image Failed",
 "unreadmsg":" unread message(s)",
-"emailsent":"Email sent!",
-"emailnotsent":"Fail to send email!",
-"emaiduplicate":"Duplicate email!",
+"emailsent":"Send Email Successful",
+"emailnotsent":"Send Email Failed",
+"emaiduplicate":"Duplicate Email",
 "reason":"Reason",
 "report":"Report"
 }

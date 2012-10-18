@@ -34,8 +34,6 @@
 
 	<!-- JS-CONTROLLER -->
 	<%@ include file="inc/jscontroller.jsp"%>
-	<script type="text/javascript"
-		src="<spring:message code="domain"/>/js/controller/home/ToS-controller.js"></script>
 	<!-- JS-COMPONENT -->
 
 </body>

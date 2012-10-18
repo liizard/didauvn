@@ -24,8 +24,7 @@ html,body {
 	display: table;
 	min-height: 100%;
 	width: 100%;
-	margin-top: 50px;
-	padding: 30px;
+	padding: 80px 30px 30px 30px;
 }
 
 /*****Main menu*****/
@@ -57,7 +56,7 @@ html,body {
 	float: left;
 }
 
-#header #menu table td{
+#header #menu table td {
 	vertical-align: top;
 }
 
@@ -81,15 +80,14 @@ html,body {
 #quickLink {
 	height: 50px;
 	line-height: 50px;
-	color: #666; 
+	color: #666;
 	text-align: right;
 }
 
-#quickLink span{
+#quickLink span {
 	height: 50px;
 	line-height: 50px;
 }
-
 
 #divSearch {
 	height: 30px;
@@ -202,7 +200,7 @@ html,body {
 	z-index: 1001;
 	-moz-opacity: 0.8;
 	opacity: .80;
-	filter: alpha(opacity =         80);
+	filter: alpha(opacity =           80);
 }
 
 .white_content {
@@ -218,7 +216,6 @@ html,body {
 }
 
 /*****common*****/
-
 iframe {
 	z-index: 0;
 }
@@ -248,7 +245,6 @@ table.modify td.title {
 	vertical-align: top;
 	color: #555555;
 	font-weight: bold;
-	padding-left: 40px;
 }
 
 table.modify td.cont {

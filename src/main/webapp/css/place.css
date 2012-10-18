@@ -64,7 +64,6 @@
 	padding: 0px;
 	text-align: justify;
 	background-color: #ffffff;
-
 	display: none;
 }
 
@@ -161,7 +160,6 @@
 	margin: 0px 0px 0px 0px;
 	padding: 20px 20px 20px 20px;
 	float: right;
-	
 }
 
 #wrapperFeedback #feedbackFunction {
@@ -199,13 +197,13 @@
 	z-index: 99999;
 }
 
-#wrapperFeedback #feedbackFunction #shareByEmail table{
+#wrapperFeedback #feedbackFunction #shareByEmail table {
 	background-color: #ffffff;
 	border: solid thin #cccccc;
 	z-index: 99999;
 }
 
-#wrapperFeedback #feedbackFunction #shareByEmail table td{
+#wrapperFeedback #feedbackFunction #shareByEmail table td {
 	padding: 10px;
 	background-color: #ffffff;
 	z-index: 99999;
@@ -422,16 +420,25 @@
 
 /*****Update*****/
 #divAdditionalUpdate {
+	
 }
 
 #divNewsUpdate {
+	
 }
 
 #divGeneraUpdate {
+	
 }
 
 #divImageUpdate {
+	
 }
 
 #divVideoUpdate {
+	
+}
+
+div.nicEdit-main {
+	background-color: white;
 }

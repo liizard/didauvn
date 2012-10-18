@@ -5,11 +5,6 @@
 <div ng-controller="PlaceCtrl">
 
 	<div id="wrapperFeedback">
-		<div>
-			<img alt="Static map"
-				ng-src="http://maps.googleapis.com/maps/api/staticmap?center={{place.locationX}},{{place.locationY}}&zoom=15&size=410x320&maptype=roadmap&markers=color:blue%7Clabel:S%7C{{place.locationX}},{{place.locationY}}&sensor=false" />
-			<br> <a target="_blank" ng-href=" {{directionLink}}">{{langPlace.direction}}</a>
-		</div>
 		<fb:like
 			href="http://developers.facebook.com/docs/reference/plugins/like/"
 			send="true" width="410" show_faces="true"></fb:like>
@@ -41,6 +36,11 @@
 						<img style="vertical-align: middle;" alt=""
 							src="<spring:message code="domain"/>/img/res/icon/phone.png" />
 						{{place.phone}}
+					</p>
+					<p>
+						<img style="vertical-align: middle;" alt=""
+							src="<spring:message code="domain"/>/img/res/icon/web.png" />
+						{{place.website}}
 					</p>
 				</div>
 			</div>
