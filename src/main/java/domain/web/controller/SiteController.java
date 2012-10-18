@@ -156,14 +156,19 @@ public class SiteController {
 		return VIEW_BASE + "/user/userview";
 	}
 
-	@RequestMapping(value = "user/general", method = RequestMethod.GET)
-	public String userGeneral() {
-		return VIEW_BASE + "/user/usergeneral";
-	}
+//	@RequestMapping(value = "user/general", method = RequestMethod.GET)
+//	public String userGeneral() {
+//		return VIEW_BASE + "/user/usergeneral";
+//	}
 
 	@RequestMapping(value = "user/place", method = RequestMethod.GET)
-	public String userPlacel() {
+	public String userPlace() {
 		return VIEW_BASE + "/user/userplace";
+	}
+	
+	@RequestMapping(value = "user/manager", method = RequestMethod.GET)
+	public String userManager() {
+		return VIEW_BASE + "/user/usermanager";
 	}
 
 	@RequestMapping(value = "user/login", method = RequestMethod.GET)

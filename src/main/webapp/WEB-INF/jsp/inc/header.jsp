@@ -56,7 +56,7 @@
 				title="{{langCommon.createplace}}"><img alt=""
 				src="<spring:message code="domain"/>/img/res/icon/addPlace.png">
 			</a> <a ng-show="userSession.user.uid>0"
-				href="<spring:message code="domain"/>/user/#/general"
+				href="<spring:message code="domain"/>/user/#/place"
 				title="{{langCommon.setting}}"><img alt=""
 				src="<spring:message code="domain"/>/img/res/icon/setting.png">
 			</a> <a ng-show="userSession.user.uid>0"

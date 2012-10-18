@@ -21,7 +21,9 @@
 	<%@ include file="inc/header.jsp"%>
 
 	<!-- WRAPPER -->
-	<%@ include file="inc/wrapper.jsp"%>
+	<div ng-controller="UserCtrl">
+		<%@ include file="inc/wrapper.jsp"%>
+	</div>
 
 	<!-- FOOTER -->
 	<%@ include file="inc/footer.jsp"%>

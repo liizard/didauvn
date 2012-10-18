@@ -63,11 +63,11 @@ import domain.user.model.User;
 @Configuration
 @ImportResource("classpath:META-INF/spring/applicationContext*.xml")
 public class SocialConfig {
-	public final static String SOCIAL_CONNECT_VIEW = "user/userconnect";
+	public final static String SOCIAL_CONNECT_VIEW = "";	// "user/userconnect";
 	public final static String SOCIAL_CONNECT_URL = SystemConstant.DOMAIN
 			+ "/user/#/connect";
 	public final static String SOCIAL_CONNECT_SUCCESS_URL = SystemConstant.DOMAIN
-			+ "/user/#/general";
+			+ "/user/#/place";
 
 	// Facebook constant
 	public final static String FB_APP_ID = "439021562792734";
