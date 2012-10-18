@@ -73,7 +73,29 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 				} catch (ParseException e) {
 				}
 				// status: 1 = not enable
-				pstmt.setInt(5, 0);
+				pstmt.setInt(5, 1);
+				return pstmt;
+			}
+		};
+		getJdbcTemplate().update(psc, keyHolder);
+		return keyHolder.getKey().longValue();
+	}
+
+	// Insert to User
+	@Override
+	public long insertForFB(final User user) {
+		final KeyHolder keyHolder = new GeneratedKeyHolder();
+		final PreparedStatementCreator psc = new PreparedStatementCreator() {
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con)
+					throws SQLException {
+				PreparedStatement pstmt = con
+						.prepareStatement(
+								"INSERT INTO Users(email,name,status,createDate) VALUES(?,?,?,NOW())",
+								Statement.RETURN_GENERATED_KEYS);
+				pstmt.setString(1, user.getEmail());
+				pstmt.setString(2, user.getName());
+				pstmt.setInt(3, 1);
 				return pstmt;
 			}
 		};
@@ -84,13 +106,13 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 	// Update User
 	@Override
 	public void update(User user) throws ParseException {
-		String sql = "UPDATE Users SET name=?,gender=?,birthday=? WHERE id=?";
-		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		String sql = "UPDATE Users SET name=?,gender=?,birthday=?,rStatus=?,hometown=? WHERE id=?";
+		SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 		java.sql.Date date = new java.sql.Date(df.parse(user.getBirthday())
 				.getTime());
 		getJdbcTemplate().update(sql, user.getName(),
 				Gender.valueOf(user.getGender().toUpperCase()).ordinal(), date,
-				user.getUid());
+				user.getrStatus(), user.getHomeTown(), user.getUid());
 	}
 
 	// Delete from User
@@ -230,9 +252,11 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 		user.setEmail((String) row.get("email"));
 		user.setPassword((String) row.get("password"));
 		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-		user.setBirthday(df.format((Date) row.get("birthday")));
-		user.setGender((Gender.values()[(Integer) row.get("Gender")]).name()
-				.toLowerCase());
+		if (row.get("birthday") != null)
+			user.setBirthday(df.format((Date) row.get("birthday")));
+		if (row.get("Gender") != null)
+			user.setGender((Gender.values()[(Integer) row.get("Gender")])
+					.name().toLowerCase());
 		user.setName((String) row.get("name"));
 		user.setStatus((Integer) row.get("status"));
 		user.setCreateDate((Date) row.get("createDate"));
@@ -260,7 +284,7 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 		String sql = "Update users SET status = 1 WHERE id = ?";
 		getJdbcTemplate().update(sql, userId);
 	}
-	
+
 	@Override
 	public void deactivateUser(long userId) {
 		String sql = "Update users SET status = 0 WHERE id = ?";

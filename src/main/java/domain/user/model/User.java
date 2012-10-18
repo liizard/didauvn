@@ -46,6 +46,8 @@ public class User implements Serializable {
 	private String birthday;
 	private int status;
 	private String gender;
+	private String rStatus;
+	private String homeTown;
 	private Date createDate;
 	private String avatar;
 	private boolean isFacebookUser;
@@ -153,6 +155,22 @@ public class User implements Serializable {
 
 	public void setFacebookUser(boolean isFacebookUser) {
 		this.isFacebookUser = isFacebookUser;
+	}
+
+	public String getrStatus() {
+		return rStatus;
+	}
+
+	public void setrStatus(String rStatus) {
+		this.rStatus = rStatus;
+	}
+
+	public String getHomeTown() {
+		return homeTown;
+	}
+
+	public void setHomeTown(String homeTown) {
+		this.homeTown = homeTown;
 	}
 
 }

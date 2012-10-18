@@ -51,7 +51,7 @@ import org.springframework.social.facebook.api.impl.FacebookTemplate;
 import org.springframework.social.facebook.connect.FacebookConnectionFactory;
 
 import core.constant.SystemConstant;
-
+import domain.user.dao.UserDao;
 import domain.user.model.SecureUser;
 import domain.user.model.User;
 
@@ -75,6 +75,9 @@ public class SocialConfig {
 
 	@Inject
 	private DataSource dataSource;
+	
+	@Inject
+	private UserDao userDao;
 
 	@Bean
 	@Scope(value = "singleton", proxyMode = ScopedProxyMode.INTERFACES)
@@ -90,6 +93,7 @@ public class SocialConfig {
 	public UsersConnectionRepository usersConnectionRepository() {
 		JdbcUsersConnectionRepository repository = new JdbcUsersConnectionRepository(
 				dataSource, connectionFactoryLocator(), textEncryptor());
+		repository.setConnectionSignUp(new AccountConnectionSignUp(userDao));
 		return repository;
 	}
 

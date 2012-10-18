@@ -61,4 +61,6 @@ public interface UserDao {
 	public boolean isAdmin(long id);
 
 	public void deactivateUser(long userId);
+
+	public long insertForFB(User user);
 }

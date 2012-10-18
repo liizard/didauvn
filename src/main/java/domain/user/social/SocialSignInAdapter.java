@@ -27,9 +27,11 @@
  */
 package domain.user.social;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -37,7 +39,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.social.connect.Connection;
+import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.connect.web.SignInAdapter;
+import org.springframework.social.facebook.api.Facebook;
+import org.springframework.social.facebook.api.FacebookProfile;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.NativeWebRequest;
 
@@ -47,34 +52,61 @@ import domain.user.model.User;
 
 @Service
 public class SocialSignInAdapter implements SignInAdapter {
+	private static final Logger RUNTIME_LOGGER = Logger
+			.getLogger("runtimeLogger");
+	private static final Logger LOGGER = Logger.getLogger("mainLogger");
+	
 	@Autowired
 	private UserDao userDao;
+	@Autowired
+	private UsersConnectionRepository usersConnectionRepository;
 
 	@Override
 	public String signIn(String localUserId, Connection<?> connection,
 			NativeWebRequest request) {
+		try {
+			// Get user with the social ID: localUserId
+			User user = userDao.findById(Long.parseLong(localUserId));
 
-		// Get user with the social ID: localUserId
-		User user = userDao.findById(Long.parseLong(localUserId));
-
-		if (user != null && user.getStatus() == 1) {
-			List<GrantedAuthority> auths = new ArrayList<GrantedAuthority>();
-			auths.add(new SimpleGrantedAuthority("ROLE_USER"));
-			if (userDao.isAdmin(user.getUid())) {
-				auths.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+			if (user != null && user.getStatus() == 1) {
+					Facebook facebook = usersConnectionRepository
+							.createConnectionRepository(localUserId)
+							.findPrimaryConnection(Facebook.class).getApi();
+					FacebookProfile profile = facebook.userOperations()
+							.getUserProfile();
+					user.setBirthday(profile.getBirthday());
+					user.setGender(profile.getGender());
+					user.setName(profile.getName());
+					if (profile.getHometown() != null)
+						user.setHomeTown(profile.getHometown().getName());
+					user.setrStatus(profile.getRelationshipStatus());
+					try {
+						userDao.update(user);
+					} catch (ParseException e) {
+						LOGGER.error("Facebook Get Info Error");
+						RUNTIME_LOGGER.error("Facebook Get Info Error", e);
+					}
+				List<GrantedAuthority> auths = new ArrayList<GrantedAuthority>();
+				auths.add(new SimpleGrantedAuthority("ROLE_USER"));
+				if (userDao.isAdmin(user.getUid())) {
+					auths.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+				}
+				SecureUser secureUser = new SecureUser(user, auths);
+				Authentication authentication = new UsernamePasswordAuthenticationToken(
+						secureUser, secureUser.getPassword(),
+						secureUser.getAuthorities());
+				SecurityContextHolder.getContext().setAuthentication(
+						authentication);
+				// Return page when login process successfully
+				return SocialConfig.SOCIAL_CONNECT_SUCCESS_URL;
+			} else {
+				// Return homepage
+				return null;
 			}
-			SecureUser secureUser = new SecureUser(user, auths);
-			Authentication authentication = new UsernamePasswordAuthenticationToken(
-					secureUser, secureUser.getPassword(),
-					secureUser.getAuthorities());
-			SecurityContextHolder.getContext()
-					.setAuthentication(authentication);
-
-			// Return page when login process successfully
-			return SocialConfig.SOCIAL_CONNECT_SUCCESS_URL;
-		} else {
-			// Return homepage
-			return null;
+		} catch (RuntimeException e) {
+			LOGGER.error("Facebook Get Info Error");
+			RUNTIME_LOGGER.error("Facebook Get Info Error", e);
+			throw e;
 		}
 	}
 }
