@@ -24,7 +24,7 @@
 
 		
 		<security:logout invalidate-session="true"
-			logout-success-url="${sec.loginURL}" logout-url="${sec.logoutURL}" />
+			logout-success-url="${sec.logoutRedirect}" logout-url="${sec.logoutURL}" />
 
 	</security:http>
 
