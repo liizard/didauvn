@@ -14,28 +14,19 @@ package domain.user.controller;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import core.exception.DdException;
 import domain.place.model.PlaceGeneral;
-import domain.user.model.Password;
 import domain.user.model.User;
 import domain.user.model.UserGeneral;
 import domain.user.model.UserSession;
@@ -46,7 +37,7 @@ import domain.user.service.UserService;
 public class UserController {
 	@Autowired
 	private UserService userService;
-	private ObjectMapper mapper = new ObjectMapper();
+//	private ObjectMapper mapper = new ObjectMapper();
 
 	// *Create new User
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
