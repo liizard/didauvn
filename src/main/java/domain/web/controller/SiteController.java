@@ -181,10 +181,15 @@ public class SiteController {
 		return VIEW_BASE + "/user/userlogin";
 	}
 
-	@RequestMapping(value = "user/register", method = RequestMethod.GET)
-	public String register() {
-		return VIEW_BASE + "/user/userregister";
-	}
+//	@RequestMapping(value = "user/login", method = RequestMethod.GET)
+//	public String login() {
+//		return VIEW_BASE + "/user/userlogin";
+//	}
+//
+//	@RequestMapping(value = "user/register", method = RequestMethod.GET)
+//	public String register() {
+//		return VIEW_BASE + "/user/userregister";
+//	}
 	
 //	@RequestMapping(value = "user/message", method = RequestMethod.GET)
 //	public String message() {
