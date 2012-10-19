@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<script type="text/javascript"
+		src="<spring:message code="domain"/>/js/controller/user-controller.js"></script>
 <div id="header">
 	<div style="clear: both; height: 50px;" ng-cloak class="ng-cloak">
 		<div id="logo" title="">
@@ -46,13 +48,9 @@
 		</div>
 		<div id="user">
 			<a ng-show="userSession.user.uid==0"
-				href="<spring:message code="domain"/>/user/#/login"
+				href="" onclick="connectfb()"
 				title="{{langCommon.login}}"><img alt=""
 				src="<spring:message code="domain"/>/img/res/icon/login.png">
-			</a> <a ng-show="userSession.user.uid==0"
-				href="<spring:message code="domain"/>/user/#/register"
-				title="{{langCommon.register}}"><img alt=""
-				src="<spring:message code="domain"/>/img/res/icon/signup.png">
 			</a><a ng-show="userSession.user.uid>0"
 				href="<spring:message code="domain"/>/place/#/new"
 				title="{{langCommon.createplace}}"><img alt=""
@@ -66,6 +64,9 @@
 				title="{{langCommon.logout}}"><img alt=""
 				src="<spring:message code="domain"/>/img/res/icon/logout.png">
 			</a>
+			<form id="fb_signin" action="/didauvn/signin/facebook" method="POST">
+				<input type="hidden" name="scope" value="publish_stream,email,user_birthday" />
+			</form>
 		</div>
 	</div>
 
