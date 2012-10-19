@@ -66,50 +66,6 @@ function UserCtrl($rootScope, $scope, $http, errorHandlerService,validationServi
 }
 UserCtrl.$inject = [ '$rootScope', '$scope', '$http', 'errorHandlerService','validationService'];
 
-function RegisterCtrl($rootScope, $scope, $http, $location, errorHandlerService,validationService) {
-	$scope.user = [];
-	$scope.confirmpassword = '';
-
-	$scope.getUser = function() {
-		$http.get(DOMAIN + '/data/user/new').success(function(data) {
-			$scope.user = data;
-		});
-	};
-	$scope.register = function() {
-		validationService.checkEmail($scope.user.email,'err229',$scope.langUser.registerfail);
-		validationService.checkEmpty($scope.user.name,'err222',$scope.langUser.registerfail);
-		validationService.checkLarger($scope.user.name,USERNAME_LENGTH,'err223',$scope.langUser.registerfail);
-		validationService.checkEmpty($scope.user.birthday,'err224',$scope.langUser.registerfail);
-		validationService.checkDate($scope.user.birthday,'err2200',$scope.langUser.registerfail);
-		validationService.checkEmpty($scope.user.password,'err225',$scope.langUser.registerfail);
-		validationService.checkSmaller($scope.user.password,PASSWORD_LENGTH,'err226',$scope.langUser.registerfail);
-		validationService.checkEqual($scope.user.password,$scope.confirmpassword,'err2201',$scope.langUser.registerfail);
-		
-		$http.post(DOMAIN + '/data/user/new', $scope.user).success(
-		function(data) {
-			// Check error
-			errorHandlerService.handle(data,
-					$scope.langUser.registerfail);
-
-			// Redirect to user page login
-			$location.path('login');
-		});
-	};
-	// *Initial
-	$scope.getUser();
-	$(function() {
-		$.datepicker.setDefaults($.datepicker.regional[$rootScope.lang]);
-		$("#datepicker").datepicker({
-			onSelect : function(dateText) {
-				$scope.user.birthday = dateText;
-				$scope.$apply();
-			}
-		});
-	});
-}
-RegisterCtrl.$inject = [ '$rootScope', '$scope', '$http', '$location',
-		'errorHandlerService','validationService' ];
-
 function connectfb() {
 	document.getElementById("fb_signin").submit();
 }
